@@ -27,14 +27,14 @@ type=${REPLACEME} # For output template
 
 # Variables that change per analysis. Check carefully! 
 covariate=noINT #_noINT
-N=20
-template=L3_task-ugr_group_noINT_n20_flame1.fsf # L3_task-ugdg_COMPOSITE_noINT_n54_flame1.fsf
+N=47
+template=L3_task-ugr_group_noINT_n47_flame1.fsf # L3_task-ugdg_COMPOSITE_noINT_n54_flame1.fsf
 
 # Set once and then forget.
-model=1
+model=2
 task=ugr
 modeltype=flame1
-templatedir="/data/projects/rf1-sra-ugr/templates"
+templatedir="/ZPOOL/data/projects/rf1-sra-ugr/templates"
 MAINOUTPUT=${maindir}/derivatives/fsl/COPE/L3_model-${model}_task-${task}_type-${type}-n${N}-cov-${covariate}-${modeltype}
 
 

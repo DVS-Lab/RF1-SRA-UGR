@@ -10,7 +10,7 @@ type=$2
 task=ugr # edit if necessary
 sm=5 # edit if necessary
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
-model=1
+model=2
 NCOPES=14 #14
 
 

@@ -12,7 +12,7 @@
 # ensure paths are correct irrespective from where user runs the script
 scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 maindir="$(dirname "$scriptdir")"
-rf1datadir=/data/projects/rf1-sra-data #need to fix this upon release (no hard coding paths)
+rf1datadir=/ZPOOL/data/projects/rf1-sra-data #need to fix this upon release (no hard coding paths)
 
 # study-specific inputs
 TASK=ugr
@@ -43,16 +43,16 @@ model=2
 #maskname="Insula-1243_extracted"
 #echo "Mask for 1243 is $maskname"
 
-$else
-$maskname=$ppi
-$echo "Using mask $maskname"
-$fi
+# $else
+# $maskname=$ppi
+# $echo "Using mask $maskname"
+# $fi
 
 
 # set inputs and general outputs (should not need to chage across studies in Smith Lab)
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
 mkdir -p $MAINOUTPUT
-DATA=${rf1datadir}/derivatives/fmriprep/sub-${sub}/func/sub-${sub}_task-${TASK}_run-${run}_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz
+DATA=${rf1datadir}/derivatives/fmriprep/sub-${sub}/func/sub-${sub}_task-${TASK}_run-${run}_space-MNI152NLin6Asym_desc-preproc_bold.nii.gz
 NVOLUMES=`fslnvols $DATA`
 CONFOUNDEVS=${rf1datadir}/derivatives/fsl/confounds/sub-${sub}/sub-${sub}_task-${TASK}_run-${run}_desc-fslConfounds.tsv
 if [ ! -e $CONFOUNDEVS ]; then

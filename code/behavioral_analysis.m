@@ -13,30 +13,61 @@ clc
 % dollar amount for analysis. 
 
 currentdir = pwd;
-maindir = '/data/projects/rf1-sra/stimuli/Scan-Lets_Make_A_Deal'; % set on computer doing the analysis
+maindir = '/ZPOOL/data/projects/rf1-sra/stimuli/Scan-Lets_Make_A_Deal'; % set on computer doing the analysis
 output_folder = [currentdir '/output/'];
 
-subjects = [10369
+subjects = [10317
+10369
 10402
 10418
+10429
 10462
 10478
+10486
 10529
 10541
+10555
+10572
 10581
+10584
 10585
 10589
+10590
 10596
+10603
 10606
 10608
-10656
-10663
-10677
-10486
-10572
-10603
 10617
-];
+10636
+10638
+10641
+10642
+10644
+10647
+10649
+10652
+10656
+10657
+10659
+10663
+10673
+10674
+10677
+10685
+10690
+10691
+10700
+10701
+10716
+10720
+10723
+10741
+10774
+10777
+10781
+10783
+10800
+10804];
 
 %% Extract data
 

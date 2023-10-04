@@ -11,7 +11,7 @@
 # 2) log missing inputs?
 # 3) zero padding for run number. fix at heudiconv conversion
 
-datadir=/data/projects/rf1-sra-data
+datadir=/ZPOOL/data/projects/rf1-sra-data
 
 scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 maindir="$(dirname "$scriptdir")"
@@ -38,11 +38,11 @@ for run in 1 2; do
   if [ -e $input ]; then # sub-3176/ugdg/run-01_event_computer_punish.txt
 
    # for pmod tsvs
-bash /data/tools/bidsutils/BIDSto3col/BIDSto3col.sh -h "Offer_pmod"  $input ${output}/run-0${run} #Change "Endowment" to "Offer" if necessary
+bash /ZPOOL/data/tools/BIDSto3col.sh -h "Offer_pmod"  $input ${output}/run-0${run} #Change "Endowment" to "Offer" if necessary
 
 # For normal tsvs
 
-#bash /data/tools/bidsutils/BIDSto3col/BIDSto3col.sh $input ${output}/run-0${run}
+#bash /ZPOOL/data/tools/BIDSto3col.sh $input ${output}/run-0${run}
 
   else
     echo "PATH ERROR: cannot locate ${input}."
