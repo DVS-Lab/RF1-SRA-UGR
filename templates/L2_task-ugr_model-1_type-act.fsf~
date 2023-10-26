@@ -30,7 +30,7 @@ set fmri(featwatcher_yn) 0
 set fmri(sscleanup_yn) 0
 
 # Output directory
-set fmri(outputdir) "/data/projects/rf1-sra-ugr/derivatives/fsl/L2_task2"
+set fmri(outputdir) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl/L2_task-ugr_model-1_simple"
 
 # TR(s)
 set fmri(tr) 3
@@ -266,7 +266,7 @@ set fmri(regstandard_nonlinear_warpres) 10
 set fmri(paradigm_hp) 100
 
 # Number of lower-level copes feeding into higher-level analysis
-set fmri(ncopeinputs) 14
+set fmri(ncopeinputs) 11
 
 # Use lower-level cope 1 for higher-level analysis
 set fmri(copeinput.1) 1
@@ -301,20 +301,11 @@ set fmri(copeinput.10) 1
 # Use lower-level cope 11 for higher-level analysis
 set fmri(copeinput.11) 1
 
-# Use lower-level cope 12 for higher-level analysis
-set fmri(copeinput.12) 1
-
-# Use lower-level cope 13 for higher-level analysis
-set fmri(copeinput.13) 1
-
-# Use lower-level cope 14 for higher-level analysis
-set fmri(copeinput.14) 1
-
 # 4D AVW data or FEAT directory (1)
-set feat_files(1) "/data/projects/rf1-sra-ugr/derivatives/fsl/sub-10369/L1_task-ugr_model-1_type-act_run-1_sm-5.feat"
+set feat_files(1) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl/sub-10608/L1_task-ugr_model-1_type-act_run-1_sm-5.feat"
 
 # 4D AVW data or FEAT directory (2)
-set feat_files(2) "/data/projects/rf1-sra-ugr/derivatives/fsl/sub-10369/L1_task-ugr_model-1_type-act_run-2_sm-5.feat"
+set feat_files(2) "/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl/sub-10608/L1_task-ugr_model-1_type-act_run-2_sm-5.feat"
 
 # Add confound EVs text file
 set fmri(confoundevs) 0

@@ -266,7 +266,7 @@ set fmri(regstandard_nonlinear_warpres) 10
 set fmri(paradigm_hp) 100
 
 # Total voxels
-set fmri(totalVoxels) 99443520
+set fmri(totalVoxels) 81959040
 
 
 # Number of lower-level copes feeding into higher-level analysis
@@ -834,7 +834,7 @@ set fmri(tempfilt_yn9) 0
 set fmri(deriv_yn9) 0
 
 # Custom EV file (EV 9)
-set fmri(custom9) "EV_MISSED_TRIAL"
+set fmri(custom9) "EVDIR_missed_trial.txt"
 
 # Orthogonalise EV 9 wrt EV 0
 set fmri(ortho9.0) 0
@@ -1074,19 +1074,19 @@ set fmri(con_real6.9) 0
 set fmri(conpic_real.7) 1
 
 # Title for contrast_real 7
-set fmri(conname_real.7) "choice social pmod"
+set fmri(conname_real.7) "choice social_pmod"
 
 # Real contrast_real vector 7 element 1
-set fmri(con_real7.1) 0
+set fmri(con_real7.1) 0.0
 
 # Real contrast_real vector 7 element 2
-set fmri(con_real7.2) 0
+set fmri(con_real7.2) 0.0
 
 # Real contrast_real vector 7 element 3
-set fmri(con_real7.3) 0
+set fmri(con_real7.3) 0.0
 
 # Real contrast_real vector 7 element 4
-set fmri(con_real7.4) 0
+set fmri(con_real7.4) 0.0
 
 # Real contrast_real vector 7 element 5
 set fmri(con_real7.5) 0
@@ -1107,10 +1107,10 @@ set fmri(con_real7.9) 0
 set fmri(conpic_real.8) 1
 
 # Title for contrast_real 8
-set fmri(conname_real.8) "choice nonsocial pmod"
+set fmri(conname_real.8) "choice nonsocial_pmod"
 
 # Real contrast_real vector 8 element 1
-set fmri(con_real8.1) 0
+set fmri(con_real8.1) 0.0
 
 # Real contrast_real vector 8 element 2
 set fmri(con_real8.2) 0.0
@@ -1140,19 +1140,19 @@ set fmri(con_real8.9) 0
 set fmri(conpic_real.9) 1
 
 # Title for contrast_real 9
-set fmri(conname_real.9) "cue social > social high"
+set fmri(conname_real.9) "cue social > nonsocial"
 
 # Real contrast_real vector 9 element 1
 set fmri(con_real9.1) 1.0
 
 # Real contrast_real vector 9 element 2
-set fmri(con_real9.2) -1.0
+set fmri(con_real9.2) 1.0
 
 # Real contrast_real vector 9 element 3
-set fmri(con_real9.3) 0.0
+set fmri(con_real9.3) -1.0
 
 # Real contrast_real vector 9 element 4
-set fmri(con_real9.4) 0.0
+set fmri(con_real9.4) -1.0
 
 # Real contrast_real vector 9 element 5
 set fmri(con_real9.5) 0
@@ -1173,13 +1173,13 @@ set fmri(con_real9.9) 0.0
 set fmri(conpic_real.10) 1
 
 # Title for contrast_real 10
-set fmri(conname_real.10) "cue nonsocial > nonsocial low"
+set fmri(conname_real.10) "cue fair < unfair"
 
 # Real contrast_real vector 10 element 1
-set fmri(con_real10.1) 0
+set fmri(con_real10.1) 1.0
 
 # Real contrast_real vector 10 element 2
-set fmri(con_real10.2) 0.0
+set fmri(con_real10.2) -1.0
 
 # Real contrast_real vector 10 element 3
 set fmri(con_real10.3) 1.0
@@ -1206,13 +1206,13 @@ set fmri(con_real10.9) 0
 set fmri(conpic_real.11) 1
 
 # Title for contrast_real 11
-set fmri(conname_real.11) "choice social > nonsocial"
+set fmri(conname_real.11) "cue social fair > unfair"
 
 # Real contrast_real vector 11 element 1
-set fmri(con_real11.1) 0
+set fmri(con_real11.1) 1.0
 
 # Real contrast_real vector 11 element 2
-set fmri(con_real11.2) 0
+set fmri(con_real11.2) -1.0
 
 # Real contrast_real vector 11 element 3
 set fmri(con_real11.3) 0
@@ -1221,16 +1221,16 @@ set fmri(con_real11.3) 0
 set fmri(con_real11.4) 0
 
 # Real contrast_real vector 11 element 5
-set fmri(con_real11.5) 1.0
+set fmri(con_real11.5) 0.0
 
 # Real contrast_real vector 11 element 6
-set fmri(con_real11.6) -1.0
+set fmri(con_real11.6) 0.0
 
 # Real contrast_real vector 11 element 7
 set fmri(con_real11.7) 0.0
 
 # Real contrast_real vector 11 element 8
-set fmri(con_real11.8) 0
+set fmri(con_real11.8) 0.0
 
 # Real contrast_real vector 11 element 9
 set fmri(con_real11.9) 0
@@ -1239,7 +1239,7 @@ set fmri(con_real11.9) 0
 set fmri(conpic_real.12) 1
 
 # Title for contrast_real 12
-set fmri(conname_real.12) "choice social > nonsocial pmod"
+set fmri(conname_real.12) "cue nonsocial fair > unfair"
 
 # Real contrast_real vector 12 element 1
 set fmri(con_real12.1) 0
@@ -1248,22 +1248,22 @@ set fmri(con_real12.1) 0
 set fmri(con_real12.2) 0
 
 # Real contrast_real vector 12 element 3
-set fmri(con_real12.3) 0
+set fmri(con_real12.3) 1.0
 
 # Real contrast_real vector 12 element 4
-set fmri(con_real12.4) 0
+set fmri(con_real12.4) -1.0
 
 # Real contrast_real vector 12 element 5
-set fmri(con_real12.5) 0
+set fmri(con_real12.5) 0.0
 
 # Real contrast_real vector 12 element 6
 set fmri(con_real12.6) 0
 
 # Real contrast_real vector 12 element 7
-set fmri(con_real12.7) 1.0
+set fmri(con_real12.7) 0.0
 
 # Real contrast_real vector 12 element 8
-set fmri(con_real12.8) -1.0
+set fmri(con_real12.8) 0.0
 
 # Real contrast_real vector 12 element 9
 set fmri(con_real12.9) 0.0
@@ -1272,31 +1272,31 @@ set fmri(con_real12.9) 0.0
 set fmri(conpic_real.13) 1
 
 # Title for contrast_real 13
-set fmri(conname_real.13) "cue social > nonsocial"
+set fmri(conname_real.13) "choice social > nonsocial"
 
 # Real contrast_real vector 13 element 1
-set fmri(con_real13.1) 1.0
+set fmri(con_real13.1) 0.0
 
 # Real contrast_real vector 13 element 2
-set fmri(con_real13.2) 1.0
+set fmri(con_real13.2) 0.0
 
 # Real contrast_real vector 13 element 3
-set fmri(con_real13.3) -1.0
+set fmri(con_real13.3) 0.0
 
 # Real contrast_real vector 13 element 4
-set fmri(con_real13.4) -1.0
+set fmri(con_real13.4) 0.0
 
 # Real contrast_real vector 13 element 5
-set fmri(con_real13.5) 0
+set fmri(con_real13.5) 1.0
 
 # Real contrast_real vector 13 element 6
-set fmri(con_real13.6) 0
+set fmri(con_real13.6) -1.0
 
 # Real contrast_real vector 13 element 7
 set fmri(con_real13.7) 0
 
 # Real contrast_real vector 13 element 8
-set fmri(con_real13.8) 0
+set fmri(con_real13.8) 0.0
 
 # Real contrast_real vector 13 element 9
 set fmri(con_real13.9) 0
@@ -1305,19 +1305,19 @@ set fmri(con_real13.9) 0
 set fmri(conpic_real.14) 1
 
 # Title for contrast_real 14
-set fmri(conname_real.14) "cue high > low"
+set fmri(conname_real.14) "choice social > nonsocial pmod"
 
 # Real contrast_real vector 14 element 1
-set fmri(con_real14.1) 1.0
+set fmri(con_real14.1) 0.0
 
 # Real contrast_real vector 14 element 2
-set fmri(con_real14.2) -1.0
+set fmri(con_real14.2) 0.0
 
 # Real contrast_real vector 14 element 3
-set fmri(con_real14.3) 1.0
+set fmri(con_real14.3) 0.0
 
 # Real contrast_real vector 14 element 4
-set fmri(con_real14.4) -1.0
+set fmri(con_real14.4) 0.0
 
 # Real contrast_real vector 14 element 5
 set fmri(con_real14.5) 0
@@ -1326,10 +1326,10 @@ set fmri(con_real14.5) 0
 set fmri(con_real14.6) 0
 
 # Real contrast_real vector 14 element 7
-set fmri(con_real14.7) 0
+set fmri(con_real14.7) 1.0
 
 # Real contrast_real vector 14 element 8
-set fmri(con_real14.8) 0
+set fmri(con_real14.8) -1.0
 
 # Real contrast_real vector 14 element 9
 set fmri(con_real14.9) 0
@@ -1536,19 +1536,19 @@ set fmri(con_orig6.9) 0
 set fmri(conpic_orig.7) 1
 
 # Title for contrast_orig 7
-set fmri(conname_orig.7) "choice social pmod"
+set fmri(conname_orig.7) "choice social_pmod"
 
 # Real contrast_orig vector 7 element 1
-set fmri(con_orig7.1) 0
+set fmri(con_orig7.1) 0.0
 
 # Real contrast_orig vector 7 element 2
-set fmri(con_orig7.2) 0
+set fmri(con_orig7.2) 0.0
 
 # Real contrast_orig vector 7 element 3
-set fmri(con_orig7.3) 0
+set fmri(con_orig7.3) 0.0
 
 # Real contrast_orig vector 7 element 4
-set fmri(con_orig7.4) 0
+set fmri(con_orig7.4) 0.0
 
 # Real contrast_orig vector 7 element 5
 set fmri(con_orig7.5) 0
@@ -1569,10 +1569,10 @@ set fmri(con_orig7.9) 0
 set fmri(conpic_orig.8) 1
 
 # Title for contrast_orig 8
-set fmri(conname_orig.8) "choice nonsocial pmod"
+set fmri(conname_orig.8) "choice nonsocial_pmod"
 
 # Real contrast_orig vector 8 element 1
-set fmri(con_orig8.1) 0
+set fmri(con_orig8.1) 0.0
 
 # Real contrast_orig vector 8 element 2
 set fmri(con_orig8.2) 0.0
@@ -1602,19 +1602,19 @@ set fmri(con_orig8.9) 0
 set fmri(conpic_orig.9) 1
 
 # Title for contrast_orig 9
-set fmri(conname_orig.9) "cue social > social high"
+set fmri(conname_orig.9) "cue social > nonsocial"
 
 # Real contrast_orig vector 9 element 1
 set fmri(con_orig9.1) 1.0
 
 # Real contrast_orig vector 9 element 2
-set fmri(con_orig9.2) -1.0
+set fmri(con_orig9.2) 1.0
 
 # Real contrast_orig vector 9 element 3
-set fmri(con_orig9.3) 0.0
+set fmri(con_orig9.3) -1.0
 
 # Real contrast_orig vector 9 element 4
-set fmri(con_orig9.4) 0.0
+set fmri(con_orig9.4) -1.0
 
 # Real contrast_orig vector 9 element 5
 set fmri(con_orig9.5) 0
@@ -1635,13 +1635,13 @@ set fmri(con_orig9.9) 0.0
 set fmri(conpic_orig.10) 1
 
 # Title for contrast_orig 10
-set fmri(conname_orig.10) "cue nonsocial > nonsocial low"
+set fmri(conname_orig.10) "cue fair < unfair"
 
 # Real contrast_orig vector 10 element 1
-set fmri(con_orig10.1) 0
+set fmri(con_orig10.1) 1.0
 
 # Real contrast_orig vector 10 element 2
-set fmri(con_orig10.2) 0.0
+set fmri(con_orig10.2) -1.0
 
 # Real contrast_orig vector 10 element 3
 set fmri(con_orig10.3) 1.0
@@ -1668,13 +1668,13 @@ set fmri(con_orig10.9) 0
 set fmri(conpic_orig.11) 1
 
 # Title for contrast_orig 11
-set fmri(conname_orig.11) "choice social > nonsocial"
+set fmri(conname_orig.11) "cue social fair > unfair"
 
 # Real contrast_orig vector 11 element 1
-set fmri(con_orig11.1) 0
+set fmri(con_orig11.1) 1.0
 
 # Real contrast_orig vector 11 element 2
-set fmri(con_orig11.2) 0
+set fmri(con_orig11.2) -1.0
 
 # Real contrast_orig vector 11 element 3
 set fmri(con_orig11.3) 0
@@ -1683,16 +1683,16 @@ set fmri(con_orig11.3) 0
 set fmri(con_orig11.4) 0
 
 # Real contrast_orig vector 11 element 5
-set fmri(con_orig11.5) 1.0
+set fmri(con_orig11.5) 0.0
 
 # Real contrast_orig vector 11 element 6
-set fmri(con_orig11.6) -1.0
+set fmri(con_orig11.6) 0.0
 
 # Real contrast_orig vector 11 element 7
 set fmri(con_orig11.7) 0.0
 
 # Real contrast_orig vector 11 element 8
-set fmri(con_orig11.8) 0
+set fmri(con_orig11.8) 0.0
 
 # Real contrast_orig vector 11 element 9
 set fmri(con_orig11.9) 0
@@ -1701,7 +1701,7 @@ set fmri(con_orig11.9) 0
 set fmri(conpic_orig.12) 1
 
 # Title for contrast_orig 12
-set fmri(conname_orig.12) "choice social > nonsocial pmod"
+set fmri(conname_orig.12) "cue nonsocial fair > unfair"
 
 # Real contrast_orig vector 12 element 1
 set fmri(con_orig12.1) 0
@@ -1710,22 +1710,22 @@ set fmri(con_orig12.1) 0
 set fmri(con_orig12.2) 0
 
 # Real contrast_orig vector 12 element 3
-set fmri(con_orig12.3) 0
+set fmri(con_orig12.3) 1.0
 
 # Real contrast_orig vector 12 element 4
-set fmri(con_orig12.4) 0
+set fmri(con_orig12.4) -1.0
 
 # Real contrast_orig vector 12 element 5
-set fmri(con_orig12.5) 0
+set fmri(con_orig12.5) 0.0
 
 # Real contrast_orig vector 12 element 6
 set fmri(con_orig12.6) 0
 
 # Real contrast_orig vector 12 element 7
-set fmri(con_orig12.7) 1.0
+set fmri(con_orig12.7) 0.0
 
 # Real contrast_orig vector 12 element 8
-set fmri(con_orig12.8) -1.0
+set fmri(con_orig12.8) 0.0
 
 # Real contrast_orig vector 12 element 9
 set fmri(con_orig12.9) 0.0
@@ -1734,31 +1734,31 @@ set fmri(con_orig12.9) 0.0
 set fmri(conpic_orig.13) 1
 
 # Title for contrast_orig 13
-set fmri(conname_orig.13) "cue social > nonsocial"
+set fmri(conname_orig.13) "choice social > nonsocial"
 
 # Real contrast_orig vector 13 element 1
-set fmri(con_orig13.1) 1.0
+set fmri(con_orig13.1) 0.0
 
 # Real contrast_orig vector 13 element 2
-set fmri(con_orig13.2) 1.0
+set fmri(con_orig13.2) 0.0
 
 # Real contrast_orig vector 13 element 3
-set fmri(con_orig13.3) -1.0
+set fmri(con_orig13.3) 0.0
 
 # Real contrast_orig vector 13 element 4
-set fmri(con_orig13.4) -1.0
+set fmri(con_orig13.4) 0.0
 
 # Real contrast_orig vector 13 element 5
-set fmri(con_orig13.5) 0
+set fmri(con_orig13.5) 1.0
 
 # Real contrast_orig vector 13 element 6
-set fmri(con_orig13.6) 0
+set fmri(con_orig13.6) -1.0
 
 # Real contrast_orig vector 13 element 7
 set fmri(con_orig13.7) 0
 
 # Real contrast_orig vector 13 element 8
-set fmri(con_orig13.8) 0
+set fmri(con_orig13.8) 0.0
 
 # Real contrast_orig vector 13 element 9
 set fmri(con_orig13.9) 0
@@ -1767,19 +1767,19 @@ set fmri(con_orig13.9) 0
 set fmri(conpic_orig.14) 1
 
 # Title for contrast_orig 14
-set fmri(conname_orig.14) "cue high > low"
+set fmri(conname_orig.14) "choice social > nonsocial pmod"
 
 # Real contrast_orig vector 14 element 1
-set fmri(con_orig14.1) 1.0
+set fmri(con_orig14.1) 0.0
 
 # Real contrast_orig vector 14 element 2
-set fmri(con_orig14.2) -1.0
+set fmri(con_orig14.2) 0.0
 
 # Real contrast_orig vector 14 element 3
-set fmri(con_orig14.3) 1.0
+set fmri(con_orig14.3) 0.0
 
 # Real contrast_orig vector 14 element 4
-set fmri(con_orig14.4) -1.0
+set fmri(con_orig14.4) 0.0
 
 # Real contrast_orig vector 14 element 5
 set fmri(con_orig14.5) 0
@@ -1788,10 +1788,10 @@ set fmri(con_orig14.5) 0
 set fmri(con_orig14.6) 0
 
 # Real contrast_orig vector 14 element 7
-set fmri(con_orig14.7) 0
+set fmri(con_orig14.7) 1.0
 
 # Real contrast_orig vector 14 element 8
-set fmri(con_orig14.8) 0
+set fmri(con_orig14.8) -1.0
 
 # Real contrast_orig vector 14 element 9
 set fmri(con_orig14.9) 0

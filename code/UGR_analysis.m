@@ -196,7 +196,329 @@ ylabel ('Frequency','FontSize', 16);
 set(gca,'box','off');
 set(gcf,'color','w');
 
+%% Make barplot of proportions offered
 
+% We need to bin the offers for each participant. (.05, .10, .25, .50)
+
+sub_nonsocial_accepts = [];
+sub_social_accepts = [];
+savesocialbins = [];
+savenonsocialbins = [];
+
+for jj = 1:length(subjects)
+
+    try
+        save_value = [];
+        UG_R_reject_rate_part = [];
+        name = ['Subject_' num2str(subjects(jj)) '_accept_analysis.csv'];
+        input = [input_folder,name];
+        U = readtable(input);
+        
+        savesocialbin1 = [];
+        savesocialbin2 = [];
+        savesocialbin3 = [];
+        savesocialbin4 = [];
+
+        savenonsocialbin1 = [];
+        savenonsocialbin2 = [];
+        savenonsocialbin3 = [];
+        savenonsocialbin4 = [];
+
+
+        for kk = 1:size(U,1)
+            row = U.Prop_Endowment(kk);
+            Block = U.Block(kk);
+            if row < .08
+                if Block == 3
+                    bin1 = row;
+                    savesocialbin1 = [savesocialbin1; bin1];
+                end
+                if Block == 2
+                    bin1 = row;
+                    savenonsocialbin1 = [savenonsocialbin1; bin1];
+                end
+
+            end
+
+
+            if row > .08 && row < .20
+
+                if Block == 3
+                    bin2 = row;
+                    savesocialbin2 = [savesocialbin2; bin2];
+                end
+
+                if Block == 2
+                    bin2 = row;
+                    savenonsocialbin2 = [savenonsocialbin2; bin2];
+                end
+            end
+
+            if row > .19 && row < .30
+
+                if Block == 3
+                    bin3 = row;
+                    savesocialbin3 = [savesocialbin3; bin3];
+                end
+
+                if Block == 2
+                    bin3 = row;
+                    savenonsocialbin3 = [savenonsocialbin3; bin3];
+                end
+            end
+
+
+
+            if row > .30
+                if Block == 3
+                    bin4 = row;
+                    savesocialbin4 = [savesocialbin4; bin4];
+                end
+
+                if Block == 2
+                    bin4 = row;
+                    savenonsocialbin4 = [savenonsocialbin4; bin4];
+                end
+            end
+        
+        savesocialbins = [size((savesocialbin1),1), size((savesocialbin2),1), size((savesocialbin3),1), size((savesocialbin4),1)];
+        savenonsocialbins = [size((savenonsocialbin1),1), size((savenonsocialbin2),1), size((savenonsocialbin3),1), size((savenonsocialbin4),1)];
+
+        end
+
+        sub_social_accepts = [sub_social_accepts; savesocialbins];
+        sub_nonsocial_accepts = [sub_nonsocial_accepts; savenonsocialbins];
+
+    catch
+        missing_subject = [missing_subject, subjects(jj)];
+    end
+end
+
+%% Rejections
+
+sub_nonsocial_rejects = [];
+sub_social_rejects = [];
+savesocialbins = [];
+savenonsocialbins = [];
+
+for jj = 1:length(subjects)
+
+    try
+
+        name = ['Subject_' num2str(subjects(jj)) '_reject_analysis.csv'];
+        input = [input_folder,name];
+        V = readtable(input);
+        
+        savesocialbin1 = [];
+        savesocialbin2 = [];
+        savesocialbin3 = [];
+        savesocialbin4 = [];
+
+        savenonsocialbin1 = [];
+        savenonsocialbin2 = [];
+        savenonsocialbin3 = [];
+        savenonsocialbin4 = [];
+
+
+        for kk = 1:size(V,1)
+            row = V.Prop_Endowment(kk);
+            Block = V.Block(kk);
+            if row < .08
+                if Block == 3
+                    bin1 = row;
+                    savesocialbin1 = [savesocialbin1; bin1];
+                end
+                if Block == 2
+                    bin1 = row;
+                    savenonsocialbin1 = [savenonsocialbin1; bin1];
+                end
+
+            end
+
+
+            if row > .08 && row < .20
+
+                if Block == 3
+                    bin2 = row;
+                    savesocialbin2 = [savesocialbin2; bin2];
+                end
+
+                if Block == 2
+                    bin2 = row;
+                    savenonsocialbin2 = [savenonsocialbin2; bin2];
+                end
+            end
+
+            if row > .19 && row < .30
+
+                if Block == 3
+                    bin3 = row;
+                    savesocialbin3 = [savesocialbin3; bin3];
+                end
+
+                if Block == 2
+                    bin3 = row;
+                    savenonsocialbin3 = [savenonsocialbin3; bin3];
+                end
+            end
+
+
+
+            if row > .30
+                if Block == 3
+                    bin4 = row;
+                    savesocialbin4 = [savesocialbin4; bin4];
+                end
+
+                if Block == 2
+                    bin4 = row;
+                    savenonsocialbin4 = [savenonsocialbin4; bin4];
+                end
+            end
+        
+        savesocialbins = [size((savesocialbin1),1), size((savesocialbin2),1), size((savesocialbin3),1), size((savesocialbin4),1)];
+        savenonsocialbins = [size((savenonsocialbin1),1), size((savenonsocialbin2),1), size((savenonsocialbin3),1), size((savenonsocialbin4),1)];
+
+        end
+
+        sub_social_rejects = [sub_social_rejects; savesocialbins];
+        sub_nonsocial_rejects = [sub_nonsocial_rejects; savenonsocialbins];
+
+    catch
+        missing_subject = [missing_subject, subjects(jj)];
+    end
+end
+
+%% plot proportions
+
+% Take proportion of rejections / acceptances
+
+% Add reject and accept together.
+
+total = sub_social_rejects + sub_social_accepts;
+prop_socialreject = sub_social_rejects./total;
+
+data = [mean(prop_socialreject(:,1)), mean(prop_socialreject (:,2)), mean(prop_socialreject (:,3)), mean(prop_socialreject (:,4))]; 
+x = linspace(1,4,4);
+fig = figure
+x1 = bar(x(1),data(1));
+x1.LineWidth= 2.5
+hold on
+x2 = bar(x(2),data(2));
+x2.LineWidth= 2.5
+hold on
+x3 = bar(x(3),data(3));
+x3.LineWidth= 2.5
+hold on
+x4 = bar(x(4),data(4));
+x4.LineWidth= 2.5
+bar(x,data)
+ax = gca;
+ax.FontSize = 12;
+box off
+xlabel ('Proportions', 'FontSize', 16);
+ylabel  ('Rejection Rate', 'FontSize', 16);
+title ('Rejection Rate in UG-R')
+set(gcf,'color','w');
+set(gca, 'XTick', 1:4, 'XTickLabels', {'0.05', '0.10', '0.25', '.05'})
+
+hold on
+
+% Standard Error
+
+B1Er = std(prop_socialreject(:,1)) / sqrt(length(prop_socialreject(:,1)));
+B2Er = std(prop_socialreject(:,2)) / sqrt(length(prop_socialreject(:,2)));
+B3Er = std(prop_socialreject(:,3)) / sqrt(length(prop_socialreject(:,3)));
+B4Er = std(prop_socialreject(:,4)) / sqrt(length(prop_socialreject(:,4)));
+
+err = [B1Er,B2Er, B3Er, B4Er] * 2;
+
+er = errorbar(x,data,err); 
+er.Color = [0 0 0];
+er.LineStyle = 'none';
+er.LineWidth = 2.5;
+
+hold on
+
+%% Add nonsocial
+
+figure
+total = sub_nonsocial_rejects + sub_nonsocial_accepts;
+prop_nonsocialreject = sub_nonsocial_rejects./total;
+
+
+
+data = [mean(prop_nonsocialreject(:,1)), mean(prop_nonsocialreject (:,2)), mean(prop_nonsocialreject (:,3)), mean(prop_nonsocialreject (:,4))]; 
+
+
+x = linspace(1,4,4);
+x1 = bar(x(1),data(1));
+x1.LineWidth= 2.5
+hold on
+x2 = bar(x(2),data(2));
+x2.LineWidth= 2.5
+hold on
+x3 = bar(x(3),data(3));
+x3.LineWidth= 2.5
+hold on
+x4 = bar(x(4),data(4));
+x4.LineWidth= 2.5
+bar(x,data)
+ax = gca;
+ax.FontSize = 12;
+box off
+xlabel ('Proportions', 'FontSize', 16);
+ylabel  ('Rejection Rate', 'FontSize', 16);
+title ('Rejection Rate in UG-R')
+set(gcf,'color','w');
+set(gca, 'XTick', 1:4, 'XTickLabels', {'0.05', '0.10', '0.25', '.05'})
+hold on
+
+% Standard Error
+
+B1Er = std(prop_nonsocialreject(:,1)) / sqrt(length(prop_nonsocialreject(:,1)));
+B2Er = std(prop_nonsocialreject(:,2)) / sqrt(length(prop_nonsocialreject(:,2)));
+B3Er = std(prop_nonsocialreject(:,3)) / sqrt(length(prop_nonsocialreject(:,3)));
+B4Er = std(prop_nonsocialreject(:,4)) / sqrt(length(prop_nonsocialreject(:,4)));
+
+err = [B1Er,B2Er, B3Er, B4Er] * 2;
+
+er = errorbar(x,data,err); 
+er.Color = [0 0 0];
+er.LineStyle = 'none';
+er.LineWidth = 2.5;
+hold off
+
+saveas(gcf,'Prop_Non_social_Rejections.tif')
+     
+%% plot proportions together
+
+% Take proportion of rejections / acceptances
+
+% Add reject and accept together.
+
+total = sub_social_rejects + sub_social_accepts;
+prop_socialreject = sub_social_rejects./total;
+
+total_nonsocial = sub_nonsocial_rejects + sub_nonsocial_accepts;
+prop_nonsocialreject = sub_nonsocial_rejects./total_nonsocial;
+
+data_nonsocial = [mean(prop_nonsocialreject(:,1)), mean(prop_nonsocialreject (:,2)), mean(prop_nonsocialreject (:,3)), mean(prop_nonsocialreject (:,4))]; 
+data_social = [mean(prop_socialreject(:,1)), mean(prop_socialreject (:,2)), mean(prop_socialreject (:,3)), mean(prop_socialreject (:,4))]; 
+
+figure
+
+bin1= [prop_socialreject(:,1), prop_nonsocialreject(:,1)];
+bin2= [prop_socialreject(:,2), prop_nonsocialreject(:,2)];
+bin3= [prop_socialreject(:,3), prop_nonsocialreject(:,3)];
+bin4= [prop_socialreject(:,4), prop_nonsocialreject(:,4)];
+
+barweb_dvs2([mean(bin1);mean(bin2);mean(bin3);mean(bin4)], [std(bin1)/sqrt(length(bin1)); std(bin2)/sqrt(length(bin2)); std(bin3)/sqrt(length(bin3)); std(bin4)/sqrt(length(bin4))]);
+xlabel('Proportion offered');
+xticks([1, 2, 3, 4]);
+xticklabels({'0.05','0.10', '0.25', '0.50'});
+ylabel('Rejection Rate');
+legend('Social','NonSocial');
 %% Do subjects reject unfair offers?
 
 % Collect all the UG-R offers

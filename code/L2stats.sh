@@ -11,7 +11,7 @@ task=ugr # edit if necessary
 sm=5 # edit if necessary
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
 model=2
-NCOPES=14 #14
+NCOPES=14 #11 m1 # 14 m2 # 24 m3
 
 
 # --- start EDIT HERE start: exceptions and conditionals for the task
