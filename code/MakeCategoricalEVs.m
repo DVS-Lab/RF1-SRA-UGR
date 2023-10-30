@@ -19,6 +19,7 @@ clc
 Maindir = '/ZPOOL/data/projects/rf1-sra-ugr/';
 EVdir = string([Maindir 'derivatives/fsl/EVfiles/']);
 Sub_list = readtable([Maindir 'code/newsubs.txt']); % Import Subject list.
+
 %% Loop through the subjects in UGR
 
 Missing = [];
@@ -158,6 +159,8 @@ writetable(bin3_output, fileoutput); % Save as csv file
 
 Missing
 
+
+
 %% Social
 
 Missing = [];
@@ -276,8 +279,9 @@ for ii = 1:length(Sub_list.Var1)
    
 
     end
+    end
 end
-end
+
 
 bin1_output = array2table(savebin1(1:end,:),'VariableNames', {'Irrev', 'Irrev2', 'Subject'});
 bin2_output = array2table(savebin2(1:end,:),'VariableNames', {'Irrev', 'Irrev2', 'Subject'});
@@ -296,6 +300,8 @@ fileoutput = [Maindir 'code/', name];
 writetable(bin3_output, fileoutput); % Save as csv file
 
 Missing
+
+
 
 
 

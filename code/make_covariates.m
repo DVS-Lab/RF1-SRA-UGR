@@ -12,7 +12,7 @@ clc
 
 currentdir = pwd;
 
-subjects_all = readtable('newsubs.txt');
+subjects_all = readtable('L3subs.txt');
 subjects = table2array(subjects_all);
 outputdir = [currentdir '/covariates/'];
 
@@ -115,5 +115,5 @@ if L == 1
 end
 
 name = ('rf1_covariates_ageXfevsXsocial.xls');
-fileoutput = [dest_path, name];
+fileoutput = [dest_path];
 writetable(final_output_agexfevsxsocial, fileoutput); % Save as csv file

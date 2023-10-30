@@ -11,6 +11,10 @@ clc
 % Temple University
 currentdir = pwd;
 input_folder = [currentdir '/output/'];
+
+subjects_all = readtable('newsubs.txt');
+subjects = table2array(subjects_all);
+
 %input_behavioral = 'ISTART-ALL-Combined-042122.xlsx'; % input file  
 %motion_input = 'motion_data_input.xls';
 
@@ -20,65 +24,65 @@ make_full = 1; % Reads in all subjects. Outputs subs, ones, strategic behavior, 
 %% Subs for full subject N, strat behavior, and motion.
 
 % This is the full pool of subjects. 
-
-
-if make_full == 1
-    values = [10317
-10369
-10402
-10418
-10429
-10462
-10478
-10486
-10529
-10541
-10555
-10572
-10581
-10584
-10585
-10589
-10590
-10596
-10603
-10606
-10608
-10617
-10636
-10638
-10641
-10642
-10644
-10647
-10649
-10652
-10656
-10657
-10659
-10663
-10673
-10674
-10677
-10685
-10690
-10691
-10700
-10701
-10716
-10720
-10723
-10741
-10774
-10777
-10781
-10783
-10800
-10804];
-
-end
-
-subjects = values;
+% 
+% 
+% if make_full == 1
+%     values = [10317
+% 10369
+% 10402
+% 10418
+% 10429
+% 10462
+% 10478
+% 10486
+% 10529
+% 10541
+% 10555
+% 10572
+% 10581
+% 10584
+% 10585
+% 10589
+% 10590
+% 10596
+% 10603
+% 10606
+% 10608
+% 10617
+% 10636
+% 10638
+% 10641
+% 10642
+% 10644
+% 10647
+% 10649
+% 10652
+% 10656
+% 10657
+% 10659
+% 10663
+% 10673
+% 10674
+% 10677
+% 10685
+% 10690
+% 10691
+% 10700
+% 10701
+% 10716
+% 10720
+% 10723
+% 10741
+% 10774
+% 10777
+% 10781
+% 10783
+% 10800
+% 10804];
+% 
+% end
+% 
+% subjects = values;
 %% UG_R earnings
 
 UG_R_Earnings = [];
@@ -519,6 +523,12 @@ xticks([1, 2, 3, 4]);
 xticklabels({'0.05','0.10', '0.25', '0.50'});
 ylabel('Rejection Rate');
 legend('Social','NonSocial');
+
+%% ANOVA
+
+data_nonsocial = [mean(prop_nonsocialreject(:,1)), mean(prop_nonsocialreject (:,2)), mean(prop_nonsocialreject (:,3)), mean(prop_nonsocialreject (:,4))]; 
+data_social = [mean(prop_socialreject(:,1)), mean(prop_socialreject (:,2)), mean(prop_socialreject (:,3)), mean(prop_socialreject (:,4))]; 
+
 %% Do subjects reject unfair offers?
 
 % Collect all the UG-R offers

@@ -11,6 +11,10 @@ clc
 % Temple University
 currentdir = pwd;
 input_folder = [currentdir '/output/'];
+
+subjects_all = readtable('newsubs.txt');
+subjects = table2array(subjects_all);
+
 %input_behavioral = 'ISTART-ALL-Combined-042122.xlsx'; % input file  
 %motion_input = 'motion_data_input.xls';
 
@@ -24,60 +28,7 @@ make_full = 1; % Reads in all subjects. Outputs subs, ones, strategic behavior, 
 % 1002 and 1243 excluded for now (failed preprocessing) 
 
 if make_full == 1
-    values = [10317
-10369
-10402
-10418
-10429
-10462
-10478
-10486
-10529
-10541
-10555
-10572
-10581
-10584
-10585
-10589
-10590
-10596
-10603
-10606
-10608
-10617
-10636
-10638
-10641
-10642
-10644
-10647
-10649
-10652
-10656
-10657
-10659
-10663
-10673
-10674
-10677
-10685
-10690
-10691
-10700
-10701
-10716
-10720
-10723
-10741
-10774
-10777
-10781
-10783
-10800
-10804];
-
-end
+    values = subjects
 
 
 %% UG_R earnings
