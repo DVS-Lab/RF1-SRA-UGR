@@ -12,9 +12,17 @@ clc
 
 currentdir = pwd;
 
-subjects_all = readtable('newsubs.txt');
+subjects_all = readtable('L3subs.txt');
 subjects = table2array(subjects_all);
 outputdir = [currentdir '/covariates/'];
+
+
+if exist(outputdir) == 7
+    rmdir(outputdir, 's');
+    mkdir(outputdir);
+else
+    mkdir(outputdir); % set name
+end
 
 input_behavioral = 'SFN_Covariates.xlsx'; % input file  
 %motion_input = 'motion_data_input.xls';
@@ -42,7 +50,7 @@ input_behavioral = 'SFN_Covariates.xlsx'; % input file
 data = readtable(input_behavioral);
 %data = table2array(data);
 
-cov_data = [data.sub, data.age_mo, data.fevs_sum, data.mspss_sum];
+cov_data = [data.sub, data.sub_age, data.fevs_sum, data.mspss_sum];
 behavioral_data = [];
 
 % Find subjects
@@ -59,27 +67,35 @@ ageXmspss = [behavioral_data(:,2) .* behavioral_data(:,4)];
 fevsXmspss = [behavioral_data(:,3) .* behavioral_data(:,4)];
 ageXfevsXmspss = [behavioral_data(:,2) .* behavioral_data(:,3) .* behavioral_data(:,4)];
 
-behavioral_data_full = [behavioral_data, ageXfevs, ageXmspss, ageXfevsXmspss];
-demeaned_output = behavioral_data_full(2:end,:) - mean(behavioral_data_full(2:end,:));
+behavioral_data_full = [behavioral_data(:,2:end), ageXfevs, ageXmspss, fevsXmspss, ageXfevsXmspss];
+
+behavior_test = isnan(behavioral_data_full)
+
+for ii = 1:length(behavior_test)
+    row = behavior_test(ii,:)
+    test = sum(row) > 0
 
 
-cov_data_output = array2table(demeaned_output(1:end,:),'VariableNames', {'age', 'fevs', 'mspss', 'ageXfevs', 'ageXmspss', 'fevsXmspss', 'ageXfevsXmspss'});
+
+demeaned_output_raw = behavioral_data_full - mean(behavioral_data_full);
+
+demeaned_output = array2table(demeaned_output_raw(1:end,:),'VariableNames', {'age', 'fevs', 'mspss', 'ageXfevs', 'ageXmspss', 'fevsXmspss', 'ageXfevsXmspss'});
 subject_output = array2table(behavioral_data(1:end, 1),'VariableNames', {'subject'});
 
 %% Makes a ones matrix 
 
-[N,M] = size(cov_data_output);
+[N,M] = size(demeaned_output);
 A(1:N,1) = ones; % subject number
 
-ones_output = array2table(A(1:end,:),'VariableNames', {'Ones'});
+ones_output = array2table(A(1:end,:),'VariableNames', {'ones'});
 
 %% Output file
 
 % NOTE, In the future add motion outliers!!!
 
-final_output_age_only = [subject_output:,'Subject'), ones_output(:,'Ones'), demeaned_output(:,'age')];
-final_output_agexfevs = [motion_data_output(:,'Subject'), ones_output(:,'Ones'), demeaned_output(:,'age'), demeaned_output(:,'fevs'), demeaned_output(:,'age*fevs')];
-final_output_agexfevsxsocial = [motion_data_output(:,'Subject'), ones_output(:,'Ones'), demeaned_output(:,'age'), demeaned_output(:,'fevs'),  demeaned_output(:,'social'), demeaned_output(:,'age*fevs'), demeaned_output(:,'age*social'), demeaned_output(:,'fevs*social'), demeaned_output(:,'age*fevs*social')];
+final_output_age_only = [subject_output(:,'subject'), ones_output(:,'ones'), demeaned_output(:,'age')];
+final_output_agexfevs = [subject_output(:,'subject'), ones_output(:,'ones'), demeaned_output(:,'age'), demeaned_output(:,'fevs'), demeaned_output(:,'ageXfevs')];
+final_output_agexfevsxsocial = [subject_output(:,'subject'), ones_output(:,'ones'), demeaned_output(:,'age'), demeaned_output(:,'fevs'),  demeaned_output(:,'mspss'), demeaned_output(:,'ageXfevs'), demeaned_output(:,'ageXmspss'), demeaned_output(:,'fevsXmspss'), demeaned_output(:,'ageXfevsXmspss')];
 
 dest_path = [outputdir, 'rf1_covariates_ageonly.xls'];
 [L] = isfile(dest_path);
@@ -88,7 +104,7 @@ if L == 1
 end
 
 name = ('rf1_covariates_ageonly.xls');
-fileoutput = [dest_path, name];
+fileoutput = [dest_path];
 writetable(final_output_age_only, fileoutput); % Save as csv file
 
 dest_path = [outputdir, 'rf1_covariates_agexfevs.xls'];
@@ -98,7 +114,7 @@ if L == 1
 end
 
 name = ('rf1_covariates_ageXfevs.xls');
-fileoutput = [dest_path, name];
+fileoutput = [dest_path];
 writetable(final_output_agexfevs, fileoutput); % Save as csv file
 
 dest_path = [outputdir, 'rf1_covariates_ageXfevsXsocial.xls'];
@@ -108,5 +124,5 @@ if L == 1
 end
 
 name = ('rf1_covariates_ageXfevsXsocial.xls');
-fileoutput = [dest_path, name];
+fileoutput = [dest_path];
 writetable(final_output_agexfevsxsocial, fileoutput); % Save as csv file

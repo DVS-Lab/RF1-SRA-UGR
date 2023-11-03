@@ -1273,13 +1273,13 @@ set fmri(interactionsd11.6) 0
 set fmri(interactions11.7) 0
 
 # Demean before using in interactions (EV 11 with EV 7)
-set fmri(interactionsd11.7) 0
+set fmri(interactionsd11.7) 1
 
 # Interactions (EV 11 with EV 8)
 set fmri(interactions11.8) 0
 
 # Demean before using in interactions (EV 11 with EV 8)
-set fmri(interactionsd11.8) 0
+set fmri(interactionsd11.8) 1
 
 # Interactions (EV 11 with EV 9)
 set fmri(interactions11.9) 0
@@ -1422,13 +1422,13 @@ set fmri(interactionsd12.6) 0
 set fmri(interactions12.7) 0
 
 # Demean before using in interactions (EV 12 with EV 7)
-set fmri(interactionsd12.7) 0
+set fmri(interactionsd12.7) 1
 
 # Interactions (EV 12 with EV 8)
 set fmri(interactions12.8) 0
 
 # Demean before using in interactions (EV 12 with EV 8)
-set fmri(interactionsd12.8) 0
+set fmri(interactionsd12.8) 1
 
 # Interactions (EV 12 with EV 9)
 set fmri(interactions12.9) 0
@@ -1577,13 +1577,13 @@ set fmri(interactionsd13.6) 0
 set fmri(interactions13.7) 0
 
 # Demean before using in interactions (EV 13 with EV 7)
-set fmri(interactionsd13.7) 0
+set fmri(interactionsd13.7) 1
 
 # Interactions (EV 13 with EV 8)
 set fmri(interactions13.8) 0
 
 # Demean before using in interactions (EV 13 with EV 8)
-set fmri(interactionsd13.8) 0
+set fmri(interactionsd13.8) 1
 
 # Interactions (EV 13 with EV 9)
 set fmri(interactions13.9) 0
@@ -1738,13 +1738,13 @@ set fmri(interactionsd14.6) 0
 set fmri(interactions14.7) 0
 
 # Demean before using in interactions (EV 14 with EV 7)
-set fmri(interactionsd14.7) 0
+set fmri(interactionsd14.7) 1
 
 # Interactions (EV 14 with EV 8)
 set fmri(interactions14.8) 0
 
 # Demean before using in interactions (EV 14 with EV 8)
-set fmri(interactionsd14.8) 0
+set fmri(interactionsd14.8) 1
 
 # Interactions (EV 14 with EV 9)
 set fmri(interactions14.9) 0
@@ -1905,13 +1905,13 @@ set fmri(interactionsd15.6) 0
 set fmri(interactions15.7) 0
 
 # Demean before using in interactions (EV 15 with EV 7)
-set fmri(interactionsd15.7) 0
+set fmri(interactionsd15.7) 1
 
 # Interactions (EV 15 with EV 8)
 set fmri(interactions15.8) 0
 
 # Demean before using in interactions (EV 15 with EV 8)
-set fmri(interactionsd15.8) 0
+set fmri(interactionsd15.8) 1
 
 # Interactions (EV 15 with EV 9)
 set fmri(interactions15.9) 0
@@ -2078,13 +2078,13 @@ set fmri(interactionsd16.6) 0
 set fmri(interactions16.7) 0
 
 # Demean before using in interactions (EV 16 with EV 7)
-set fmri(interactionsd16.7) 0
+set fmri(interactionsd16.7) 1
 
 # Interactions (EV 16 with EV 8)
 set fmri(interactions16.8) 0
 
 # Demean before using in interactions (EV 16 with EV 8)
-set fmri(interactionsd16.8) 0
+set fmri(interactionsd16.8) 1
 
 # Interactions (EV 16 with EV 9)
 set fmri(interactions16.9) 0
@@ -2263,7 +2263,7 @@ set fmri(interactionsd17.7) 1
 set fmri(interactions17.8) 0
 
 # Demean before using in interactions (EV 17 with EV 8)
-set fmri(interactionsd17.8) 0
+set fmri(interactionsd17.8) 1
 
 # Interactions (EV 17 with EV 9)
 set fmri(interactions17.9) 0
@@ -2403,13 +2403,13 @@ set fmri(tempfilt_yn18) 0
 set fmri(deriv_yn18) 0
 
 # Interactions (EV 18 with EV 1)
-set fmri(interactions18.1) 1
+set fmri(interactions18.1) 0
 
 # Demean before using in interactions (EV 18 with EV 1)
 set fmri(interactionsd18.1) 0
 
 # Interactions (EV 18 with EV 2)
-set fmri(interactions18.2) 1
+set fmri(interactions18.2) 0
 
 # Demean before using in interactions (EV 18 with EV 2)
 set fmri(interactionsd18.2) 0
@@ -2442,7 +2442,7 @@ set fmri(interactionsd18.6) 0
 set fmri(interactions18.7) 0
 
 # Demean before using in interactions (EV 18 with EV 7)
-set fmri(interactionsd18.7) 0
+set fmri(interactionsd18.7) 1
 
 # Interactions (EV 18 with EV 8)
 set fmri(interactions18.8) 1
@@ -3111,7 +3111,7 @@ set fmri(con_real9.18) 0
 set fmri(conpic_real.10) 1
 
 # Title for contrast_real 10
-set fmri(conname_real.10) "cue fair < unfair"
+set fmri(conname_real.10) "cue high < low"
 
 # Real contrast_real vector 10 element 1
 set fmri(con_real10.1) 0.0
@@ -3171,7 +3171,7 @@ set fmri(con_real10.18) 0
 set fmri(conpic_real.11) 1
 
 # Title for contrast_real 11
-set fmri(conname_real.11) "cue social fair > unfair"
+set fmri(conname_real.11) "cue social high > low"
 
 # Real contrast_real vector 11 element 1
 set fmri(con_real11.1) 0.0
@@ -3231,7 +3231,7 @@ set fmri(con_real11.18) 0
 set fmri(conpic_real.12) 1
 
 # Title for contrast_real 12
-set fmri(conname_real.12) "cue nonsocial fair > unfair"
+set fmri(conname_real.12) "cue nonsocial high > low"
 
 # Real contrast_real vector 12 element 1
 set fmri(con_real12.1) 0
@@ -4011,7 +4011,7 @@ set fmri(con_orig9.18) 0
 set fmri(conpic_orig.10) 1
 
 # Title for contrast_orig 10
-set fmri(conname_orig.10) "cue fair < unfair"
+set fmri(conname_orig.10) "cue high < low"
 
 # Real contrast_orig vector 10 element 1
 set fmri(con_orig10.1) 0.0
@@ -4071,7 +4071,7 @@ set fmri(con_orig10.18) 0
 set fmri(conpic_orig.11) 1
 
 # Title for contrast_orig 11
-set fmri(conname_orig.11) "cue social fair > unfair"
+set fmri(conname_orig.11) "cue social high > low"
 
 # Real contrast_orig vector 11 element 1
 set fmri(con_orig11.1) 0.0
@@ -4131,7 +4131,7 @@ set fmri(con_orig11.18) 0
 set fmri(conpic_orig.12) 1
 
 # Title for contrast_orig 12
-set fmri(conname_orig.12) "cue nonsocial fair > unfair"
+set fmri(conname_orig.12) "cue nonsocial high > low"
 
 # Real contrast_orig vector 12 element 1
 set fmri(con_orig12.1) 0

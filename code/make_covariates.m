@@ -67,11 +67,36 @@ ageXmspss = [behavioral_data(:,2) .* behavioral_data(:,4)];
 fevsXmspss = [behavioral_data(:,3) .* behavioral_data(:,4)];
 ageXfevsXmspss = [behavioral_data(:,2) .* behavioral_data(:,3) .* behavioral_data(:,4)];
 
-behavioral_data_full = [behavioral_data(:,2:end), ageXfevs, ageXmspss, fevsXmspss, ageXfevsXmspss];
-demeaned_output_raw = behavioral_data_full - mean(behavioral_data_full);
+behavioral_data_full = [behavioral_data, ageXfevs, ageXmspss, fevsXmspss, ageXfevsXmspss];
+
+behavior_test = isnan(behavioral_data_full);
+
+exclusions_applied = [];
+missing_data = [];
+subjects_keep=[];
+
+for ii = 1:length(behavior_test)
+    saveme = [];
+    missing = [];
+    row = behavior_test(ii,:);
+    test = sum(row) > 0;
+    if test == 0
+        saveme = behavioral_data_full(ii,:);
+    end
+
+    if test == 1
+        missing = behavioral_data_full(ii,:);
+    end
+
+    exclusions_applied = [exclusions_applied;saveme];
+    missing_data = [missing_data; missing];
+    subjects_keep = [subjects_keep;saveme];
+end
+
+demeaned_output_raw = exclusions_applied(:,2:end) - mean(exclusions_applied(:,2:end));
 
 demeaned_output = array2table(demeaned_output_raw(1:end,:),'VariableNames', {'age', 'fevs', 'mspss', 'ageXfevs', 'ageXmspss', 'fevsXmspss', 'ageXfevsXmspss'});
-subject_output = array2table(behavioral_data(1:end, 1),'VariableNames', {'subject'});
+subject_output = array2table(subjects_keep(1:end, 1),'VariableNames', {'subject'});
 
 %% Makes a ones matrix 
 
@@ -108,7 +133,7 @@ name = ('rf1_covariates_ageXfevs.xls');
 fileoutput = [dest_path];
 writetable(final_output_agexfevs, fileoutput); % Save as csv file
 
-dest_path = [outputdir, 'rf1_covariates_ageXfevsXsocial.xls'];
+dest_path = [outputdir, 'rf1_covariates_ageXfevsXios.xls'];
 [L] = isfile(dest_path);
 if L == 1
     delete(dest_path)
