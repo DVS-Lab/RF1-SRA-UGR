@@ -50,7 +50,8 @@ input_behavioral = 'SFN_Covariates.xlsx'; % input file
 data = readtable(input_behavioral);
 %data = table2array(data);
 
-cov_data = [data.sub, data.sub_age, data.fevs_sum, data.mspss_sum];
+%cov_data = [data.sub, data.sub_age, data.fevs_sum, data.mspss_sum];
+cov_data = [data.sub, data.sub_age, data.oafem_total data.fevs_sum];
 behavioral_data = [];
 
 % Find subjects
@@ -89,6 +90,26 @@ for ii = 1:length(behavior_test)
     end
 
     exclusions_applied = [exclusions_applied;saveme];
+    missing_data = [missing_data; missing];
+    subjects_keep = [subjects_keep;saveme];
+end
+
+exclusions_applied_2 = [];
+
+for ii = 1:length(exclusions_applied)
+    saveme = [];
+    missing = [];
+    row = exclusions_applied(ii,:);
+    test = any(row)
+    if test == 0
+        saveme = exclusions_applied(ii,:);
+    end
+
+    if test == 1
+        missing = exclusions_applied(ii,:);
+    end
+
+    exclusions_applied_2 = [exclusions_applied_2;saveme];
     missing_data = [missing_data; missing];
     subjects_keep = [subjects_keep;saveme];
 end
