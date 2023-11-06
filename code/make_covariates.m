@@ -51,7 +51,7 @@ data = readtable(input_behavioral);
 %data = table2array(data);
 
 %cov_data = [data.sub, data.oafem, data.oafem_sum, data.score_tei_globaltrait];
-cov_data = [data.sub, data.sub_age, data.oafem_total, data.oafem_total];
+cov_data = [data.sub, data.sub_age, data.oafem_total, data.score_tei_globaltrait];
 behavioral_data = [];
 
 % Find subjects
