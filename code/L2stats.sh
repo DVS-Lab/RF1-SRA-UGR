@@ -10,8 +10,8 @@ type=$2
 task=ugr # edit if necessary
 sm=5 # edit if necessary
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
-model=1
-NCOPES=12 #11 m1 # 14 m2 # add one for PHYS for PPIs
+model=2
+NCOPES=15 #11 m1 # 14 m2 # add one for PHYS for PPIs
 
 
 # --- start EDIT HERE start: exceptions and conditionals for the task

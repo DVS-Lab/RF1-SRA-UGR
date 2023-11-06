@@ -11,11 +11,10 @@ maindir="$(dirname "$scriptdir")"
 # base paths
 
 # Inputs
-L3_model_dir=L3_model-2_task-ugr_type-act-n60-cov-noINT-flame1 #L3_task-ugdg_COMPOSITE_n54_flame1.fsf
+L3_model_dir=L3_model-2_task-ugr_type-act-n52-cov-EIwINT2-flame1 #L3_task-ugdg_COMPOSITE_n54_flame1.fsf
 TYPE=act #act #w #nppi-ecn ppi_seed-NAcc-bin
-N=60
-cov=noINT #_noINT
-
+N=52
+cov=EIwINT2 #_noINT
 # Outputs
 
 model=ugr
@@ -31,7 +30,7 @@ outputdir=${maindir}/derivatives/imaging_plots
 mkdir -p $outputdir
 
 # activation: ROI name and other path information
-for ROI in 's_n_mask'; do 
+for ROI in 'dACC-thr537' 'AI-thr10' 'seed-dlPFC-bin'; do 
 #'seed-NAcc-thr' 'seed-vmPFC-5mm-thr' 'seed-ACC-50-thr' 'seed-SPL-thr'  'seed-mPFC-thr' 'seed-dlPFC-thr' 'seed-pTPJ-bin' 'seed-insula-thr'  'seed-insula-thr' 'seed-PCC_abb_extracted' 'seed-PCC_int_extracted' 'IFG_extracted' 'Insula_extracted' 'lputamen-bin' mask_act-no-int_cope-15_ugrpmod_zstat-14' 'mask_act-no-int_cope-9_ugppmod_zstat-4' 'mask_ppi-no-int_cope-14_ugpchoicepmod_zstat5' 'mask_act-no-int_cope-7_dgpcuepmod_zstat-10' 'mask_ppi-no-int_cope-11_dgppmod_zstat-10'  'mask_ppi-no-int_cope-7_dgpendowpmod_zstat-5'; do  #'seed-NAcc-thr' 'seed-vmPFC-5mm-thr' 'seed-ACC-50-thr' 'seed-SPL-thr' 'seed-insula-thr'  'seed-mPFC-thr' 'seed-dlPFC-thr' 'seed-pTPJ-thr' #'seed-dlPFC-UGR-bin'; do #
 	MASK=${maindir}/masks/${ROI}.nii.gz #masks_jbw3/
 	for COPENUM in 7 8 9 10 11 12 13 14; do # act use 7 8 9 10 11 12 for normal extractions

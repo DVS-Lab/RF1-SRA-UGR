@@ -25,7 +25,7 @@ cov_dir ='/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl/covariates/'; % Input
 %ATTITUDES = readtable([cov_dir 'final_output_attitudes.xls']); % N = 45 (PNR, TEIQUE)
 %SUBSTANCE = readtable([cov_dir 'final_output_substance_AUDIT.xls']); % N = 46 (AUDIT, DUDIT)
 %COMPOSITE = readtable([cov_dir 'final_output_strat_int.xls']); % N = 54 (REWARD and SUBSTANCE)
-STRATEGIC = readtable([codedir '/covariates/rf1_covariates_ageonly.xls']);
+STRATEGIC = readtable([codedir '/covariates/rf1_covariates_ageXEI.xls']);
 
 % Inputs into scatterplots.
 
@@ -48,65 +48,14 @@ models = {['_type-act_cov-noINT_model-ugr_']}; % ppi_seed-IFG_extracted 'nppi-ec
 
 % Test hypotheses:
 
-H2 = 1; % Modulated and unmodulated cue activation. 
-modulated = 1;
-
-%% H2 Act Modulated Cue Phase
+H2 = 1
+%% H3 Act Modulated Choices
 
 if H2 == 1
     if modulated == 1
-
-            name = 'Act_cue_results';
-            cue_s_h={'cope-01.txt'};
-            cue_s_l={'cope-02.txt'};
-            cue_ns_h={'cope-03.txt'};
-            cue_ns_l={'cope-04.txt'};
-            choice_s={'cope-05.txt'};
-            choice_ns={'cope-06.txt'};
-
-        end
-
-        type=' act';
-        plot_ugdg(name, roidir, rois, models, cope_DGP, cope_UGP, cope_UGR, type, ID_Measure_1, ID_Measure_2, ID_Measure_1_name, ID_Measure_2_name)
-        
-        % Regression
-         for r = 1:length(rois)
-        roi = rois{r} ;
-        for m = 1:length(models)
-            model = models{m};
-            DGP = load(strjoin([roidir,roi,model,cope_DGP], ''));
-        end
-         end
-       [A,B] =  size(DGP)
-       A = ones(A);
-       C = A(:,1);
-       Y = [DGP];
-       X = [C,ID_Measure_2];
-       [b,stats]= regress(Y,X)
-       
-       
-    end
-    
-    %% H2 Act Unmodulated Cue Phase
-    
-    if unmodulated == 1
-        name = 'Act_unmodulated_cue_results';
-        cope_DGP={'cope-01.txt'};
-        cope_UGP={'cope-02.txt'};
-        cope_UGR={'cope-03.txt'};
-        type=' act'; 
-        plot_ugdg(name, roidir, rois, models, cope_DGP, cope_UGP, cope_UGR, type, ID_Measure_1, ID_Measure_2, ID_Measure_1_name, ID_Measure_2_name)
-    end
-end
-
-%% H3 Act Modulated Choices
-
-if H3 == 1
-    if modulated == 1
         name = 'Act_modulated_choice_results';
-        cope_DGP={'cope-10.txt'};
-        cope_UGP={'cope-11.txt'};
-        cope_UGR={'cope-12.txt'};
+        social={'cope-11.txt'};
+        nonsocial={'cope-12.txt'};
         type=' act';
         plot_ugdg(name, roidir, rois, models, cope_DGP, cope_UGP, cope_UGR, type, ID_Measure_1, ID_Measure_2, ID_Measure_1_name, ID_Measure_2_name)
     end

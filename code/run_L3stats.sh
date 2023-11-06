@@ -11,13 +11,13 @@ maindir="$(dirname "$scriptdir")"
 
 # Change the type of analysis in the " " marks.
 
-for analysis in "ppi_seed-NAcc-bin"; do # "ppi_seed-IFG_extracted" act ppi_seed-NAcc-bin nppi-dmn nppi-ecn ppi_seed-IFG_extracted
+for analysis in "act"; do # act ppi_seed-NAcc-bin nppi-ecn 
 	
 
 # Define the contrast value and the name you would like in the output. 
 
 analysistype=${analysis}
-		for copeinfo in "7 cue_social_nonsocial" "8 cue_social_h_l" "9 cue_nonsocial_h_l" "10 cue_h_l" "11 choice_social_nonsocial" "12 phys"; do # "17 PHYS" 
+		for copeinfo in "7 cue_social_nonsocial" "8 cue_social_h_l" "9 cue_nonsocial_h_l" "10 cue_h_l" "11 choice_social_nonsocial"; do # "17 PHYS" 
 		
 		#"7 cue_social_nonsocial" "8 cue_social_h_l" "9 cue_nonsocial_h_l" "10 cue_h_l" "11 choice_social_nonsocial"
 		#"7 choice_social_pmod" "8 choice_nonsocial_pmod" "9 cue_social_nonsocial" "10 cue_h_l" "11 cue_social_h_l" "12 cue_nonsocial_h_l" "13 choice_social_nonsocial" "14 choice_social_nonsocial_pmod" "15 phys"
