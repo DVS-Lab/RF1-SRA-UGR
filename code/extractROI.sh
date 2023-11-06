@@ -11,8 +11,8 @@ maindir="$(dirname "$scriptdir")"
 # base paths
 
 # Inputs
-L3_model_dir=L3_model-2_task-ugr_type-act-n52-cov-EIwINT2-flame1 #L3_task-ugdg_COMPOSITE_n54_flame1.fsf
-TYPE=act #act #w #nppi-ecn ppi_seed-NAcc-bin
+L3_model_dir=L3_model-2_task-ugr_type-nppi-ecn-n52-cov-EIwINT2-flame1 #L3_task-ugdg_COMPOSITE_n54_flame1.fsf
+TYPE=nppi-ecn #act #w #nppi-ecn ppi_seed-NAcc-bin
 N=52
 cov=EIwINT2 #_noINT
 # Outputs
