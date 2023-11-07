@@ -12,7 +12,7 @@ clc
 currentdir = pwd;
 input_folder = [currentdir '/output/'];
 
-subjects_all = readtable('newsubs.txt');
+subjects_all = readtable('L3subs.txt');
 subjects = table2array(subjects_all);
 
 %input_behavioral = 'ISTART-ALL-Combined-042122.xlsx'; % input file  
@@ -82,7 +82,7 @@ make_full = 1; % Reads in all subjects. Outputs subs, ones, strategic behavior, 
 % 
 % end
 % 
-% subjects = values;
+values = subjects;
 %% UG_R earnings
 
 UG_R_Earnings = [];
@@ -526,8 +526,7 @@ legend('Social','NonSocial');
 
 %% ANOVA
 
-data_nonsocial = [mean(prop_nonsocialreject(:,1)), mean(prop_nonsocialreject (:,2)), mean(prop_nonsocialreject (:,3)), mean(prop_nonsocialreject (:,4))]; 
-data_social = [mean(prop_socialreject(:,1)), mean(prop_socialreject (:,2)), mean(prop_socialreject (:,3)), mean(prop_socialreject (:,4))]; 
+[p, tb1, STATS] = anova2([prop_socialreject; prop_nonsocialreject],2);
 
 %% Do subjects reject unfair offers?
 
