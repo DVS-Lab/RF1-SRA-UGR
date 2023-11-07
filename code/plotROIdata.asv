@@ -29,39 +29,10 @@ STRATEGIC = readtable([codedir '/covariates/rf1_covariates_ageXoafem.xls']);
 
 %% Make age X activation scatterplot.
 
-covariates = readtable([codedir '/covariates/rf1_covariates_ageXoafem.xls']);
-
-s = 'dACC-thr537_type-act_cov-EIwINT2_model-ugr_cope-05.txt';
+s = dACC-thr537_type-act_cov-EIwINT2_model-ugr_cope-05.txt';
 n = 'dACC-thr537_type-act_cov-EIwINT2_model-ugr_cope-06.txt';
-social = load([roidir,s]);
-nonsocial = load([roidir,n]);
-
-figure
-scatter(covariates.age, social-nonsocial,'MarkerEdgeColor',[0 .5 .5],'MarkerFaceColor',[0 .7 .7],'LineWidth',1.5);
-ax = gca;
-ax.FontSize = 12;
-title (['Subject '])
-xlabel ('Proportion', 'FontSize', 16);
-ylabel  ('Choice', 'FontSize', 16);
-i = lsline;
-i.LineWidth = 5;
-i.Color = [0 0 0];
-set(gcf,'color','w');
-
-% hold on 
-% 
-% scatter(covariates.age, nonsocial,'MarkerEdgeColor',[0 .5 .5],'MarkerFaceColor',[0 .7 .7],'LineWidth',1.5);
-% ax = gca;
-% ax.FontSize = 12;
-% title (['Subject '])
-% xlabel ('Proportion', 'FontSize', 16);
-% ylabel  ('Choice', 'FontSize', 16);
-% i = lsline;
-% i.LineWidth = 5;
-% i.Color = [0 0 0];
-% set(gcf,'color','w');
-
-
+social = load(strjoin([roidir,'dACC-thr537_type-act_cov-EIwINT2_model-ugr_cope-05.txt'], ''));
+nonsocial = load(strjoin([roidir,'dACC-thr537_type-act_cov-EIwINT2_model-ugr_cope-06.txt'], ''));
 
 %%
 

@@ -11,7 +11,7 @@ maindir="$(dirname "$scriptdir")"
 
 # Change the type of analysis in the " " marks.
 
-for analysis in "nppi-ecn"; do # act ppi_seed-NAcc-bin nppi-ecn 
+for analysis in "act"; do # act ppi_seed-NAcc-bin nppi-ecn 
 	
 
 # Define the contrast value and the name you would like in the output. 
