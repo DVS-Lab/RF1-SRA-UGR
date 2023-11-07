@@ -26,12 +26,12 @@ REPLACEME=$3 # this defines the parts of the path that differ across analyses
 type=${REPLACEME} # For output template
 
 # Variables that change per analysis. Check carefully! 
-covariate=OAFEMwINT1 #_noINT
-N=60
-template=L3_task-ugr_group_OAFEMwINT1_n60_flame1.fsf # L3_task-ugdg_COMPOSITE_noINT_n54_flame1.fsf
+covariate=EIwINT2 #_noINT
+N=52
+template=L3_task-ugr_group_EIwINT2_n52_flame1.fsf # L3_task-ugdg_COMPOSITE_noINT_n54_flame1.fsf
 
 # Set once and then forget.
-model=1
+model=2
 task=ugr
 modeltype=flame1
 templatedir="/ZPOOL/data/projects/rf1-sra-ugr/templates"
