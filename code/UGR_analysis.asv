@@ -158,7 +158,7 @@ for jj = 1:length(subjects)
         savesocial = [subjects(ii), B(2)];
         social_beta = [social_beta; savesocial];
   
-        savesocialfit = [subjects(ii), socialfit(1)];
+        savesocialfit = [subjects(ii), socialfit(2)];
         social_fit = [social_fit; savesocialfit];
         
         [B,DEV,STATS] = glmfit(nonsocial_proportion,nonsocial_decision,'binomial','link','logit'); %mnrfit(save_X,save_Y)
@@ -191,116 +191,61 @@ end
 
 % scatter betas with age.
 
-% figure
-% scatter(behavioral_data(:,2), nonsocial_beta(:,2), 'MarkerEdgeColor',[0 .5 .5],'MarkerFaceColor',[0 .7 .7],'LineWidth',1.5);
-% 
-% hold on
-% 
-% scatter(behavioral_data(:,2), social_beta(:,2), 'MarkerEdgeColor',[0 1 1],'MarkerFaceColor',[0 1 .1],'LineWidth',1.5);
-% ax = gca;
-% ax.FontSize = 12;
-% legend('social','nonsocial')
-% title ([''])
-% xlabel ('Age', 'FontSize', 16);
-% ylabel  ('Beta Proportion', 'FontSize', 16);
-% 
-% i(1) = lsline;
-% i(1).LineWidth = 5;
-% i(1).Color = [0 0 0];
-% set(gcf,'color','w');
-% 
-% i(2) = lsline;
-% i(2).LineWidth = 5;
-% i(2).Color = [0 0 0];
-% set(gcf,'color','w');
-
-%% 
-
-% figure
-% 
-% scatter(behavioral_data(:,2), nonsocial_fit(:,2), 'MarkerEdgeColor',[0 .5 .5],'MarkerFaceColor',[0 .7 .7],'LineWidth',1.5);
-% 
-% hold on
-% 
-% 
-% scatter(behavioral_data(:,2), social_fit(:,2), 'MarkerEdgeColor',[0 1 1],'MarkerFaceColor',[0 1 .1],'LineWidth',1.5);
-% ax = gca;
-% ax.FontSize = 12;
-% legend('social','nonsocial')
-% title ([''])
-% xlabel ('Age', 'FontSize', 16);
-% ylabel  ('Polyfit Proportion', 'FontSize', 16);
-% 
-% i(1) = lsline;
-% i(1).LineWidth = 5;
-% i(1).Color = [0 0 0];
-% set(gcf,'color','w');
-% 
-% i(2) = lsline;
-% i(2).LineWidth = 5;
-% i(2).Color = [0 0 0];
-% set(gcf,'color','w');
-% 
-% 
-% 
-% set(gcf,'color','w');
-
-%% UG_R earnings
-
-UG_R_Earnings = [];
-UG_R_reject = [];
-UG_R_accept = [];
-missing_subject  = [];
-UG_R_reject_rate = [];
-
-for jj = 1:length(subjects)
-    
-    try
-    save_value = [];
-    UG_R_reject_rate_part = [];
-    name = ['Subject_' num2str(subjects(jj)) '_accept_analysis.csv'];
-    input = [input_folder,name];
-    U = readtable(input);
-    UG_R_Earnings = [UG_R_Earnings; sum(U.Earned)]; % Sum acceptances.
-    UG_R_accept = [UG_R_accept; mean(U.Offer./U.Endowment)]; % Average accepted
-    
-    catch 
-        missing_subject = [missing_subject, subjects(jj)];
-    end
-        
-    try
-    name = ['Subject_' num2str(subjects(jj)) '_reject_analysis.csv'];
-    input = [input_folder,name];
-    V = readtable(input);
-    
-    UG_R_reject = [UG_R_reject; mean(V.Offer./V.Endowment)]; % Average rejected
-    UG_R_reject_rate_part = sum(U.Choice)/96; % reject rate
-    
-    catch
-        UG_R_reject_rate_part = 1; % reject rate
-        missing_subject = [missing_subject, subjects(jj)];
-    end
-    
-    UG_R_reject_rate = [UG_R_reject_rate;UG_R_reject_rate_part];
-end
-
-
 figure
-scatter(behavioral_data(:,2),UG_R_reject_rate)
+scatter(behavioral_data(:,2), nonsocial_beta(:,2), 'MarkerEdgeColor',[0 .5 .5],'MarkerFaceColor',[0 .7 .7],'LineWidth',1.5);
 
+hold on
+
+scatter(behavioral_data(:,2), social_beta(:,2), 'MarkerEdgeColor',[0 1 1],'MarkerFaceColor',[0 1 .1],'LineWidth',1.5);
 ax = gca;
 ax.FontSize = 12;
+legend('social','nonsocial')
 title ([''])
 xlabel ('Age', 'FontSize', 16);
-ylabel  ('Rejection Rate', 'FontSize', 16);
+ylabel  ('Beta Proportion', 'FontSize', 16);
 
 i(1) = lsline;
 i(1).LineWidth = 5;
 i(1).Color = [0 0 0];
 set(gcf,'color','w');
 
+i(2) = lsline;
+i(2).LineWidth = 5;
+i(2).Color = [0 0 0];
+set(gcf,'color','w');
 
-saveas(gcf,'age_rejection.svg')
+%% 
+
+figure
+
+scatter(behavioral_data(:,2), nonsocial_fit(:,2), 'MarkerEdgeColor',[0 .5 .5],'MarkerFaceColor',[0 .7 .7],'LineWidth',1.5);
+
+hold on
+
+
+scatter(behavioral_data(:,2), social_fit(:,2), 'MarkerEdgeColor',[0 1 1],'MarkerFaceColor',[0 1 .1],'LineWidth',1.5);
+ax = gca;
+ax.FontSize = 12;
+legend('social','nonsocial')
+title ([''])
+xlabel ('Age', 'FontSize', 16);
+ylabel  ('Polyfit Proportion', 'FontSize', 16);
+
+i(1) = lsline;
+i(1).LineWidth = 5;
+i(1).Color = [0 0 0];
+set(gcf,'color','w');
+
+i(2) = lsline;
+i(2).LineWidth = 5;
+i(2).Color = [0 0 0];
+set(gcf,'color','w');
+
+
+
+set(gcf,'color','w');
+
+
 
 
 %%
@@ -367,7 +312,7 @@ er.LineStyle = 'none';
 er.LineWidth = 2.5;
 hold off
 
-saveas(gcf,'Bar_Props.svg')
+saveas(gcf,'Bar_Props.tif')
 
 
 
@@ -405,22 +350,6 @@ xlabel ('Rate of Rejections as a Recipient','FontSize', 16);
 ylabel ('Frequency','FontSize', 16);
 set(gca,'box','off');
 set(gcf,'color','w');
-
-%% Age
-
-figure
-
-h = histogram(behavioral_data(:,2));
-counts = h.Values;
-h.NumBins = 8;
-ax = gca;
-ax.FontSize = 9;
-xlabel ('Rate of Rejections as a Recipient','FontSize', 16);
-ylabel ('Frequency','FontSize', 16);
-set(gca,'box','off');
-set(gcf,'color','w');
-
-saveas(gcf,'age_hist.svg')
 
 %% Make barplot of proportions offered
 
@@ -715,7 +644,7 @@ er.LineStyle = 'none';
 er.LineWidth = 2.5;
 hold off
 
-saveas(gcf,'Prop_Non_social_Rejections.svg')
+saveas(gcf,'Prop_Non_social_Rejections.tif')
      
 %% plot proportions together
 
@@ -734,19 +663,17 @@ data_social = [mean(prop_socialreject(:,1)), mean(prop_socialreject (:,2)), mean
 
 figure
 
-bin1= [prop_nonsocialreject(:,1), prop_socialreject(:,1)];
-bin2= [prop_nonsocialreject(:,2), prop_socialreject(:,2)];
-bin3= [prop_nonsocialreject(:,3), prop_socialreject(:,3)];
-bin4= [prop_nonsocialreject(:,4), prop_socialreject(:,4)];
+bin1= [prop_socialreject(:,1), prop_nonsocialreject(:,1)];
+bin2= [prop_socialreject(:,2), prop_nonsocialreject(:,2)];
+bin3= [prop_socialreject(:,3), prop_nonsocialreject(:,3)];
+bin4= [prop_socialreject(:,4), prop_nonsocialreject(:,4)];
 
 barweb_dvs2([mean(bin1);mean(bin2);mean(bin3);mean(bin4)], [std(bin1)/sqrt(length(bin1)); std(bin2)/sqrt(length(bin2)); std(bin3)/sqrt(length(bin3)); std(bin4)/sqrt(length(bin4))]);
 xlabel('Proportion offered');
 xticks([1, 2, 3, 4]);
 xticklabels({'0.05','0.10', '0.25', '0.50'});
 ylabel('Rejection Rate');
-legend('Nonsocial','Social');
-
-saveas(gcf,'Prop_social_nonsocial.svg')
+legend('Social','NonSocial');
 
 %% ANOVA
 
@@ -777,7 +704,7 @@ for ii = 1:length(values)
         name = ['Subject_' num2str(values(ii)) '_reject_analysis.csv'];
         input = [input_folder,name];
         T = readtable(input);
-        subject_combined_rejections = [subject_combined_rejections;  T.Prop_Endowment, T.Block];
+        subject_combined_rejections = [subject_combined_rejections;  T.Endowment, T.Prop_Endowment];
     catch
         missing_reject = [missing_reject, values(ii)];
     end
@@ -785,7 +712,7 @@ for ii = 1:length(values)
         name = ['Subject_' num2str(values(ii)) '_accept_analysis.csv'];
         input = [input_folder,name];
         S = readtable(input);
-        subject_combined_acceptances = [subject_combined_acceptances; S.Prop_Endowment, S.Block];
+        subject_combined_acceptances = [subject_combined_acceptances; S.Endowment, S.Prop_Endowment];
     catch
         missing_accept = [missing_accept, values(ii)];
     end
@@ -804,23 +731,8 @@ for ii = 1:length(values)
         
     end
     
-    try
-        %Y = categorical(subject_UGR.Choice);
-        Y = subject_UGR.Choice;
-        
-    end
-    
-    sub_age = behavioral_data(ii,2);
-    [N,~] = size(subject_UGR.Prop_Endowment);
-    age_mat = zeros(N,1)+sub_age;
-
-    int1 = (subject_UGR.Prop_Endowment-mean(subject_UGR.Prop_Endowment)) .* (subject_UGR.Block-mean(subject_UGR.Block));
-    int2 = (age_mat-mean(age_mat)) .* (subject_UGR.Block-mean(subject_UGR.Block));
-    int3 = (age_mat-mean(age_mat)) .* (subject_UGR.Prop_Endowment-mean(subject_UGR.Prop_Endowment));
-    int4 = (age_mat-mean(age_mat)) .* (subject_UGR.Block-mean(subject_UGR.Block) .* subject_UGR.Prop_Endowment-mean(subject_UGR.Prop_Endowment));
-    
-    X = [age_mat, subject_UGR.Prop_Endowment, subject_UGR.Block, int1, int2, int3, int4];
-    %X = zscore(X);
+    X = [subject_UGR.Prop_Endowment];
+    X = zscore(X);
     save_X = [save_X; X];
     save_Y = [save_Y; Y];
     try
@@ -840,8 +752,8 @@ dump = [];
 [B,DEV,STATS] = glmfit(save_X,save_Y,'binomial','link','logit'); %mnrfit(save_X,save_Y)
 se=STATS.se;
 
-data = [mean(B(1,:));  mean(B(2,:));  mean(B(3,:)); mean(B(4,:)); mean(B(5,:)); mean(B(6,:)); mean(B(7,:)); mean(B(8,:))];
-x = linspace(1,8,8);
+data = [mean(B(1,:));  mean(B(2,:)) ];
+x = linspace(1,2,2);
 figure
 bar(x,data)
 ax = gca;
@@ -850,8 +762,8 @@ box off
 xlabel ('Regressors', 'FontSize', 16);
 ylabel  ('Z-standardized Beta Weight', 'FontSize', 16);
 set(gcf,'color','w');
-set(gca, 'XTick', 1:8, 'XTickLabels', {'Intercept', 'Age', 'Fairness', 'Social Context', 'Fairness*Context', 'Age*Context', 'Age*Fairness', 'Three-Way'});
-title('Does Fairness, Age, and Social Context Predict UG-R Choices?')
+set(gca, 'XTick', 1:3, 'XTickLabels', {'Intercept', 'Endowment', 'Proportion'});
+title('Does Endowment Predict UG-R Accept/Reject Choices?')
 
 hold on
 
@@ -859,14 +771,9 @@ hold on
 
 B1Er = se(1);
 B2Er = se(2);
-B3Er = se(3);
-B4Er = se(4);
-B5Er = se(5);
-B6Er = se(6);
-B7Er = se(7);
-B8Er = se(8);
 
-err = [B1Er,B2Er,B3Er,B4Er,B5Er,B6Er,B7Er, B8Er] * 2;
+
+err = [B1Er,B2Er] * 2;
 
 er = errorbar(x,data,err); %errorbar(x,data,errlow,errhigh);
 er.Color = [0 0 0];
@@ -874,7 +781,7 @@ er.LineStyle = 'none';
 er.LineWidth = 1;
 hold off
 
-saveas(gcf,'Bar_UGR.svg')
+saveas(gcf,'Bar_UGR.png')
 
 % %% UGR High/low analysis.
 % 
