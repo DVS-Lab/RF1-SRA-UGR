@@ -17,7 +17,7 @@ for analysis in "act"; do # act ppi_seed-NAcc-bin nppi-ecn
 # Define the contrast value and the name you would like in the output. 
 
 analysistype=${analysis}
-		for copeinfo in "5 choice_social" "6 choice_nonsocial"; do # "17 PHYS" 
+		for copeinfo in "5 choice_social" "6 choice_nonsocial" "7 choice_social_pmod" "8 choice_nonsocial_pmod" "9 cue_social_nonsocial" "10 cue_h_l" "11 cue_social_h_l" "12 cue_nonsocial_h_l" "13 choice_social_nonsocial" "14 choice_social_nonsocial_pmod"; do # "17 PHYS" 
 		
 		#"5 choice_social" "6 choice_nonsocial" "7 cue_social_nonsocial" "8 cue_social_h_l" "9 cue_nonsocial_h_l" "10 cue_h_l" "11 choice_social_nonsocial"
 		#"5 choice_social" "6 choice_nonsocial" "7 choice_social_pmod" "8 choice_nonsocial_pmod" "9 cue_social_nonsocial" "10 cue_h_l" "11 cue_social_h_l" "12 cue_nonsocial_h_l" "13 choice_social_nonsocial" "14 choice_social_nonsocial_pmod" "15 phys"
