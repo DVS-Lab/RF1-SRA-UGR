@@ -14,7 +14,7 @@ currentdir = pwd;
 
 subjects_all = readtable('L3subs.txt');
 subjects = table2array(subjects_all);
-outputdir = [currentdir '/covariates/'];
+outputdir = [currentdir '\covariates\'];
 
 
 if exist(outputdir) == 7
@@ -51,7 +51,7 @@ data = readtable(input_behavioral);
 %data = table2array(data);
 
 %cov_data = [data.sub, data.oafem, data.oafem_sum, data.score_tei_globaltrait];
-cov_data = [data.sub, data.sub_age, data.oafem_total, data.sub_age];
+cov_data = [data.sub, data.sub_age, data.oafem_total, data.oafem_total];
 behavioral_data = [];
 
 % Find subjects

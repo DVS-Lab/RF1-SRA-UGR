@@ -12,10 +12,10 @@ clc
 % This code plots ROIs for the UGDG task.
 
 % set up dirs
-codedir = 'A:\Data\RF1-SRA-UGR\code' %'/ZPOOL/data/projects/rf1-sra-ugr/code'; % Run code from this path.
+codedir = pwd; %'/ZPOOL/data/projects/rf1-sra-ugr/code'; % Run code from this path.
 addpath(codedir)
 maindir = '/ZPOOL/data/projects/rf1-sra-ugr';
-roidir = 'A:\Data\RF1-SRA-UGR\derivatives\imaging_plots\'; % Results from extractROI script.
+roidir = 'C:\Users\tul03789\Documents\GitHub\RF1-SRA-UGR\derivatives\imaging_plots\'; % Results from extractROI script.
 oldroidir = '/ZPOOL/data/projects/rf1-sra-ugr/derivatives/imaging_plots_old/'; % For debugging and comparison
 resultsdir = '/ZPOOL/data/projects/rf1-sra-ugr/derivatives/imaging_plots/results/'; % Output where results will be saved.
 cov_dir ='/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl/covariates/'; % Input for covariates
@@ -25,11 +25,11 @@ cov_dir ='/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl/covariates/'; % Input
 %ATTITUDES = readtable([cov_dir 'final_output_attitudes.xls']); % N = 45 (PNR, TEIQUE)
 %SUBSTANCE = readtable([cov_dir 'final_output_substance_AUDIT.xls']); % N = 46 (AUDIT, DUDIT)
 %COMPOSITE = readtable([cov_dir 'final_output_strat_int.xls']); % N = 54 (REWARD and SUBSTANCE)
-STRATEGIC = readtable([codedir '/covariates/rf1_covariates_ageXoafem.xls']);
+STRATEGIC = readtable([codedir '/covariates/rf1_covariates_ageXEI.xls']);
 
 %% Make age X activation scatterplot.
 
-covariates = readtable([codedir '/covariates/rf1_covariates_ageXoafem.xls']);
+covariates = readtable([codedir '\covariates\rf1_covariates_ageXOAFEM.xls']);
 
 s = 's_n_age_1_type-act_cov-OAFEMwINT2_model-ugr_cope-05.txt';
 n = 's_n_age_1_type-act_cov-OAFEMwINT2_model-ugr_cope-06.txt';
@@ -50,12 +50,96 @@ set(gcf,'color','w');
 
 saveas(gcf,'vlPFC.tif')
 
+
+%% ECN result
+
+currentdir =pwd;
+
+subjects_all = readtable('L3subs.txt');
+subjects = table2array(subjects_all);
+outputdir = [currentdir '/covariates/'];
+
+
+if exist(outputdir) == 7
+    rmdir(outputdir, 's');
+    mkdir(outputdir);
+else
+    mkdir(outputdir); % set name
+end
+
+input_behavioral = 'v2.1_SFN_Covariates.xlsx'; % input file  
+%motion_input = 'motion_data_input.xls';
+
+currentdir = pwd;
+subjects_all = readtable('L3subs.txt');
+subjects = table2array(subjects_all);
+outputdir = [currentdir '/covariates/'];
+
+input_behavioral = 'v2.1_SFN_Covariates.xlsx';
+data = readtable(input_behavioral);
+%data = table2array(data);
+
+cov_data = [data.sub, data.sub_age, data.oafem_total];
+behavioral_data = [];
+
+% Find subjects
+
+for ii = 1:length(subjects)
+    subj = subjects(ii);
+    subj_row = find(cov_data==subj);
+    save = cov_data(subj_row,:);
+    behavioral_data = [behavioral_data;save];
+end
+
+behavior_test = isnan(behavioral_data);
+
+exclusions_applied = [];
+missing_data = [];
+subjects_keep=[];
+
+for ii = 1:length(behavior_test)
+    saveme = [];
+    missing = [];
+    row = behavior_test(ii,:);
+    test = sum(row) > 0;
+    if test == 0
+        saveme = behavioral_data(ii,:);
+    end
+
+    if test == 1
+        missing = behavioral_data(ii,:);
+    end
+
+    exclusions_applied = [exclusions_applied;saveme];
+    missing_data = [missing_data; missing];
+    subjects_keep = [subjects_keep;saveme];
+end
+
+s = 's_n_age_1_type-act_cov-OAFEMwINT2_model-ugr_cope-05.txt';
+n = 's_n_age_1_type-act_cov-OAFEMwINT2_model-ugr_cope-06.txt';
+social = load([roidir,s]);
+nonsocial = load([roidir,n]);
+
+figure
+scatter(exclusions_applied(:,2), social-nonsocial,'MarkerEdgeColor',[0 .5 .5],'MarkerFaceColor',[0 .7 .7],'LineWidth',1.5);
+ax = gca;
+ax.FontSize = 12;
+title ([''])
+xlabel ('Age', 'FontSize', 16);
+ylabel  ('vlPFC Activation', 'FontSize', 16);
+i = lsline;
+i.LineWidth = 5;
+i.Color = [0 0 0];
+set(gcf,'color','w');
+
+saveas(gcf,'vlPFC.tif')
+
 %% Age histogram
 
 figure
-h = histogram(covariates.age);
+h = histogram(exclusions_applied(:,2));
 counts = h.Values;
-h.NumBins = 12;
+h.NumBins = 8;
 ax = gca;
 ax.FontSize = 12;
 xlabel ('Age','FontSize', 16);
@@ -63,7 +147,88 @@ ylabel ('Frequency','FontSize', 16);
 set(gca,'box','off')
 set(gcf,'color','w');
 
-saveas(gcf,'age_Scores.png')
+saveas(gcf,'age_Scores.svg')
+
+%% ECN result
+
+
+subjects_all = readtable('L3subs.txt');
+subjects = table2array(subjects_all);
+outputdir = [currentdir '/covariates/'];
+
+
+if exist(outputdir) == 7
+    rmdir(outputdir, 's');
+    mkdir(outputdir);
+else
+    mkdir(outputdir); % set name
+end
+
+input_behavioral = 'v2.1_SFN_Covariates.xlsx'; % input file  
+%motion_input = 'motion_data_input.xls';
+
+currentdir = pwd;
+subjects_all = readtable('L3subs.txt');
+subjects = table2array(subjects_all);
+outputdir = [currentdir '/covariates/'];
+
+input_behavioral = 'v2.1_SFN_Covariates.xlsx';
+data = readtable(input_behavioral);
+%data = table2array(data);
+
+cov_data = [data.sub, data.sub_age, data.score_tei_globaltrait];
+behavioral_data = [];
+
+% Find subjects
+
+for ii = 1:length(subjects)
+    subj = subjects(ii);
+    subj_row = find(cov_data==subj);
+    save = cov_data(subj_row,:);
+    behavioral_data = [behavioral_data;save];
+end
+
+behavior_test = isnan(behavioral_data);
+
+exclusions_applied = [];
+missing_data = [];
+subjects_keep=[];
+
+for ii = 1:length(behavior_test)
+    saveme = [];
+    missing = [];
+    row = behavior_test(ii,:);
+    test = sum(row) > 0;
+    if test == 0
+        saveme = behavioral_data(ii,:);
+    end
+
+    if test == 1
+        missing = behavioral_data(ii,:);
+    end
+
+    exclusions_applied = [exclusions_applied;saveme];
+    missing_data = [missing_data; missing];
+    subjects_keep = [subjects_keep;saveme];
+end
+
+n = 'ecn_mask1_type-nppi-ecn_cov-EIwINT2_model-ugr_cope-08.txt';
+
+nonsocial = load([roidir,n]);
+
+figure
+scatter(exclusions_applied(:,2), nonsocial,'MarkerEdgeColor',[0 .5 .5],'MarkerFaceColor',[0 .7 .7],'LineWidth',1.5);
+ax = gca;
+ax.FontSize = 12;
+title ([''])
+xlabel ('Age', 'FontSize', 16);
+ylabel  ('ECN-vmPFC Nonsocial Fairness', 'FontSize', 16);
+i = lsline;
+i.LineWidth = 5;
+i.Color = [0 0 0];
+set(gcf,'color','w');
+
+saveas(gcf,'vmPFC.svg')
 
 
 
