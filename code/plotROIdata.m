@@ -132,7 +132,7 @@ i.LineWidth = 5;
 i.Color = [0 0 0];
 set(gcf,'color','w');
 
-saveas(gcf,'vlPFC.tif')
+saveas(gcf,'vlPFC.svg')
 
 %% Age histogram
 
