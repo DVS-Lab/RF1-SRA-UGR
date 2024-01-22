@@ -12,7 +12,7 @@ clc
 
 currentdir = pwd;
 
-subjects_all = readtable('L3subs.txt');
+subjects_all = readtable('newsubs.txt');
 subjects = table2array(subjects_all);
 outputdir = [currentdir '\covariates\'];
 

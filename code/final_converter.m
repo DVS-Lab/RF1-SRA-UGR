@@ -13,7 +13,7 @@ codedir= '/ZPOOL/data/projects/rf1-sra-ugr/code/';
 % not up to date.
 
 subjects_all_use = readtable([codedir 'newsubs.txt']);
-subjects = 10529 %table2array(subjects_all_use);
+subjects = table2array(subjects_all_use);
 
 for ii = 1:length(subjects)
 
