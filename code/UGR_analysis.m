@@ -10,7 +10,7 @@ clc
 % DVS Lab
 % Temple University
 currentdir = pwd;
-input_folder = [currentdir '/output/'];
+input_folder = [currentdir 'output/'];
 
 subjects_all = readtable('L3subs.txt');
 subjects = table2array(subjects_all);
