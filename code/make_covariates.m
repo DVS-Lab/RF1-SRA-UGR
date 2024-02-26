@@ -12,9 +12,9 @@ clc
 
 currentdir = pwd;
 
-subjects_all = readtable('newsubs.txt');
+subjects_all = readtable('L3_List_n79.txt');
 subjects = table2array(subjects_all);
-outputdir = [currentdir '\covariates\'];
+outputdir = [currentdir '/covariates/'];
 
 
 if exist(outputdir) == 7
