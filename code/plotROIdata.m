@@ -14,8 +14,8 @@ clc
 % set up dirs
 codedir = pwd; %'/ZPOOL/data/projects/rf1-sra-ugr/code'; % Run code from this path.
 addpath(codedir)
-maindir = '/ZPOOL/data/projects/rf1-sra-ugr';
-roidir = 'C:/Users\tul03789\Documents\GitHub\RF1-SRA-UGR\derivatives\imaging_plots\'; % Results from extractROI script.
+maindir = 'A:\Data\RF1-SRA-UGR\';
+roidir = 'A:\Data\RF1-SRA-UGR\derivatives\imaging_plots\'; % Results from extractROI script.
 oldroidir = '/ZPOOL/data/projects/rf1-sra-ugr/derivatives/imaging_plots_old/'; % For debugging and comparison
 resultsdir = '/ZPOOL/data/projects/rf1-sra-ugr/derivatives/imaging_plots/results/'; % Output where results will be saved.
 cov_dir ='/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl/covariates/'; % Input for covariates
@@ -25,11 +25,11 @@ cov_dir ='/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl/covariates/'; % Input
 %ATTITUDES = readtable([cov_dir 'final_output_attitudes.xls']); % N = 45 (PNR, TEIQUE)
 %SUBSTANCE = readtable([cov_dir 'final_output_substance_AUDIT.xls']); % N = 46 (AUDIT, DUDIT)
 %COMPOSITE = readtable([cov_dir 'final_output_strat_int.xls']); % N = 54 (REWARD and SUBSTANCE)
-STRATEGIC = readtable([codedir '/covariates/rf1_covariates_ageXEI.xls']);
+STRATEGIC = readtable([codedir '\covariates\final_output_agexEI.xls']);
 
 %% Make age X activation scatterplot.
 
-covariates = readtable([codedir '\covariates\rf1_covariates_ageXOAFEM.xls']);
+covariates = readtable([codedir '\covariates\final_output_agexOAFEM.xls']);
 
 s = 's_n_age_1_type-act_cov-OAFEMwINT2_model-ugr_cope-05.txt';
 n = 's_n_age_1_type-act_cov-OAFEMwINT2_model-ugr_cope-06.txt';
@@ -55,7 +55,7 @@ saveas(gcf,'vlPFC.tif')
 
 currentdir =pwd;
 
-subjects_all = readtable('L3subs.txt');
+subjects_all = readtable('L3_List_OAFEM_sublist.txt');
 subjects = table2array(subjects_all);
 outputdir = [currentdir '/covariates/'];
 
@@ -67,19 +67,19 @@ else
     mkdir(outputdir); % set name
 end
 
-input_behavioral = 'v2.1_SFN_Covariates.xlsx'; % input file  
+input_behavioral = 'covariates.csv'; % input file  
 %motion_input = 'motion_data_input.xls';
 
 currentdir = pwd;
-subjects_all = readtable('L3subs.txt');
+subjects_all = readtable('L3_List_OAFEM_sublist.txtt');
 subjects = table2array(subjects_all);
 outputdir = [currentdir '/covariates/'];
 
-input_behavioral = 'v2.1_SFN_Covariates.xlsx';
+%input_behavioral = 'v2.1_SFN_Covariates.xlsx';
 data = readtable(input_behavioral);
 %data = table2array(data);
 
-cov_data = [data.sub, data.sub_age, data.oafem_total];
+cov_data = [data.sub_id_rf1_data, data.sub_age, data.oafem_total];
 behavioral_data = [];
 
 % Find subjects

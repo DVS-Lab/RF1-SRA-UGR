@@ -10,12 +10,12 @@ clc
 % DVS Lab
 % Temple University
 currentdir = pwd;
-input_folder = [currentdir 'output/'];
+input_folder = [currentdir '\output\'];
 
-subjects_all = readtable('L3subs.txt');
+subjects_all = readtable('newsubs.txt');
 subjects = table2array(subjects_all);
 
-%input_behavioral = 'ISTART-ALL-Combined-042122.xlsx'; % input file  
+input_behavioral = 'v2.2_SFN_Covariates.xls'; % input file  
 %motion_input = 'motion_data_input.xls';
 
 make_full = 1; % Reads in all subjects. Outputs subs, ones, strategic behavior, tsnr, fd means.
@@ -175,9 +175,9 @@ end
 
 % Pull in same subjects to find raw age value
 
-input_behavioral = 'v2.1_SFN_Covariates.xlsx'; % input file  
+input_behavioral = 'v2.2_SFN_Covariates.xls'; % input file  
 data = readtable(input_behavioral);
-cov_data = [data.sub, data.sub_age, data.oafem_total, data.sub_age];
+cov_data = [data.sub_id, data.sub_age, data.oafem_total, data.sub_age];
 
 behavioral_data = [];
 
