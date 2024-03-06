@@ -15,7 +15,7 @@ clc
 codedir = pwd; %'/ZPOOL/data/projects/rf1-sra-ugr/code'; % Run code from this path.
 addpath(codedir)
 maindir = '/ZPOOL/data/projects/rf1-sra-ugr';
-roidir = 'C:\Users\tul03789\Documents\GitHub\RF1-SRA-UGR\derivatives\imaging_plots\'; % Results from extractROI script.
+roidir = 'C:/Users\tul03789\Documents\GitHub\RF1-SRA-UGR\derivatives\imaging_plots\'; % Results from extractROI script.
 oldroidir = '/ZPOOL/data/projects/rf1-sra-ugr/derivatives/imaging_plots_old/'; % For debugging and comparison
 resultsdir = '/ZPOOL/data/projects/rf1-sra-ugr/derivatives/imaging_plots/results/'; % Output where results will be saved.
 cov_dir ='/ZPOOL/data/projects/rf1-sra-ugr/derivatives/fsl/covariates/'; % Input for covariates
