@@ -60,18 +60,18 @@ subjects = table2array(subjects_all);
 outputdir = [currentdir '/covariates/'];
 
 
-if exist(outputdir) == 7
-    rmdir(outputdir, 's');
-    mkdir(outputdir);
-else
-    mkdir(outputdir); % set name
-end
+% if exist(outputdir) == 7
+%     rmdir(outputdir, 's');
+%     mkdir(outputdir);
+% else
+%     mkdir(outputdir); % set name
+% end
 
 input_behavioral = 'covariates.csv'; % input file  
 %motion_input = 'motion_data_input.xls';
 
 currentdir = pwd;
-subjects_all = readtable('L3_List_OAFEM_sublist.txtt');
+subjects_all = readtable('L3_List_OAFEM_sublist.txt');
 subjects = table2array(subjects_all);
 outputdir = [currentdir '/covariates/'];
 
