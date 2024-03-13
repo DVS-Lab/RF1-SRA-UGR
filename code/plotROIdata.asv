@@ -149,7 +149,7 @@ set(gcf,'color','w');
 
 saveas(gcf,'age_Scores.svg')
 
-%% EI result
+%% ECN result
 
 
 % subjects_all = readtable('L3subs.txt');
@@ -164,7 +164,7 @@ saveas(gcf,'age_Scores.svg')
 %     mkdir(outputdir); % set name
 % end
 
-input_behavioral = 'covariates/final_output_agexEI.xls'; % input file  
+input_behavioral = 'covariates.csv'; % input file  
 %motion_input = 'motion_data_input.xls';
 
 currentdir = pwd;
@@ -174,7 +174,7 @@ outputdir = [currentdir '/covariates/'];
 data = readtable(input_behavioral);
 %data = table2array(data);
 
-cov_data = [data.subject, data.EI];
+cov_data = [data.sub_id_rf1_data, data.sub_age, data.oafem_total];
 behavioral_data = [];
 
 % Find subjects
@@ -210,88 +210,7 @@ for ii = 1:length(behavior_test)
     subjects_keep = [subjects_keep;saveme];
 end
 
-n = 'COPE13_act_EI_ei_neg_type-act_cov-EIwINT1_model-ugr_cope-13.txt';
-
-nonsocial = load([roidir,n]);
-
-figure
-scatter(exclusions_applied(:,2), nonsocial,'MarkerEdgeColor',[0 .5 .5],'MarkerFaceColor',[0 .7 .7],'LineWidth',1.5);
-ax = gca;
-ax.FontSize = 12;
-title ([''])
-xlabel ('EI', 'FontSize', 16);
-ylabel  ('MPFC activation', 'FontSize', 16);
-i = lsline;
-i.LineWidth = 5;
-i.Color = [0 0 0];
-set(gcf,'color','w');
-
-saveas(gcf,'vmPFC.svg')
-
-
-%% ECN-angular gyrus result
-
-
-% subjects_all = readtable('L3subs.txt');
-% subjects = table2array(subjects_all);
-% outputdir = [currentdir '/covariates/'];
-% 
-% 
-% if exist(outputdir) == 7
-%     rmdir(outputdir, 's');
-%     mkdir(outputdir);
-% else
-%     mkdir(outputdir); % set name
-% end
-
-input_behavioral = 'covariates/final_output_agexEI.xls'; % input file  
-%motion_input = 'motion_data_input.xls';
-
-currentdir = pwd;
-subjects_all = readtable('L3_List_OAFEM_sublist.txt');
-subjects = table2array(subjects_all);
-outputdir = [currentdir '/covariates/'];
-data = readtable(input_behavioral);
-%data = table2array(data);
-
-cov_data = [data.subject, data.age];
-
-behavioral_data = [];
-
-% Find subjects
-
-for ii = 1:length(subjects)
-    subj = subjects(ii);
-    subj_row = find(cov_data==subj);
-    save = cov_data(subj_row,:);
-    behavioral_data = [behavioral_data;save];
-end
-
-behavior_test = isnan(behavioral_data);
-
-exclusions_applied = [];
-missing_data = [];
-subjects_keep=[];
-
-for ii = 1:length(behavior_test)
-    saveme = [];
-    missing = [];
-    row = behavior_test(ii,:);
-    test = sum(row) > 0;
-    if test == 0
-        saveme = behavioral_data(ii,:);
-    end
-
-    if test == 1
-        missing = behavioral_data(ii,:);
-    end
-
-    exclusions_applied = [exclusions_applied;saveme];
-    missing_data = [missing_data; missing];
-    subjects_keep = [subjects_keep;saveme];
-end
-
-n = 'COPE8_nppi_EI_age_pos_type-nppi-ecn_cov-EIwINT1_model-ugr_cope-08.txt';
+n = 'COPE7_OAFEM_int_neg_type-nppi-ecn_cov-OAFEMwINT1_model-ugr_cope-07.txt';
 
 nonsocial = load([roidir,n]);
 
@@ -301,7 +220,7 @@ ax = gca;
 ax.FontSize = 12;
 title ([''])
 xlabel ('Age', 'FontSize', 16);
-ylabel  ('ECN-Angular Gyrus activation', 'FontSize', 16);
+ylabel  ('ECN-target Social Pmod', 'FontSize', 16);
 i = lsline;
 i.LineWidth = 5;
 i.Color = [0 0 0];

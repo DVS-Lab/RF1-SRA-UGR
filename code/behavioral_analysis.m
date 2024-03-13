@@ -13,8 +13,10 @@ clc
 % dollar amount for analysis. 
 
 currentdir = pwd;
-maindir = '/ZPOOL/data/projects/rf1-sra/stimuli/Scan-Lets_Make_A_Deal'; % set on computer doing the analysis
-output_folder = [currentdir '/output/'];
+%maindir = '/ZPOOL/data/projects/rf1-sra/stimuli/Scan-Lets_Make_A_Deal'; % set on computer doing the analysis
+maindir = 'A:\Data\rf1-sra\stimuli\Scan-Lets_Make_A_Deal'
+
+output_folder = [currentdir '\output\'];
 subjects_all = readtable('newsubs.txt');
 subjects = table2array(subjects_all);
 

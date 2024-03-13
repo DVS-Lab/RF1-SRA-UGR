@@ -786,47 +786,11 @@ i(1).Color = [0 0 0];
 set(gcf,'color','w');
 
 
-saveas(gcf,'age_socialsens.svg')
+saveas(gcf,'age_rejection.svg')
 
 
 [R,P] = corrcoef(behavioral_data(:,2),nonsocial_sensitivity);
-
-
-figure
-scatter(behavioral_data(:,2),nonsocial_sensitivity)
-
-ax = gca;
-ax.FontSize = 12;
-title ([''])
-xlabel ('Age', 'FontSize', 16);
-ylabel  ('Nonsocial Sensitivity (slope)', 'FontSize', 16);
-
-i(1) = lsline;
-i(1).LineWidth = 5;
-i(1).Color = [0 0 0];
-set(gcf,'color','w');
-
-
-saveas(gcf,'age_nonsocialsens.svg')
-
 [R,P] = corrcoef(behavioral_data(:,2),social_sensitivity-nonsocial_sensitivity);
-
-figure
-scatter(behavioral_data(:,2),social_sensitivity-nonsocial_sensitivity)
-
-ax = gca;
-ax.FontSize = 12;
-title ([''])
-xlabel ('Age', 'FontSize', 16);
-ylabel  ('Social-Nonsocial Sensitivity (slope)', 'FontSize', 16);
-
-i(1) = lsline;
-i(1).LineWidth = 5;
-i(1).Color = [0 0 0];
-set(gcf,'color','w');
-
-
-saveas(gcf,'age_social-nonsocialsens.svg')
 
 %% ANOVA
 
