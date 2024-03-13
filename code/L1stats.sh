@@ -239,7 +239,7 @@ ln -s $FSLDIR/etc/flirtsch/ident.mat ${OUTPUT}.feat/reg/standard2example_func.ma
 #
 #else
      ln -s ${OUTPUT}.feat/mean_func.nii.gz ${OUTPUT}.feat/reg/standard.nii.gz
-fi
+#fi
 
 
 # delete unused files

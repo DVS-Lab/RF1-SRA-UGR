@@ -6,7 +6,7 @@ basedir="$(dirname "$scriptdir")"
 nruns=2
 task=ugr # edit if necessary
 
-for ppi in "ecn"; do # putting 0 first will indicate "activation" Put in "NAcc-bin" and "ecn" for PPI 
+for ppi in "eyeball_left" "eyeball_right"; do # putting 0 first will indicate "activation" Put in "NAcc-bin" and "ecn" for PPI 
 
 	for sub in `cat ${scriptdir}/newsubs.txt`; do 
 	  for run in `seq $nruns`; do
