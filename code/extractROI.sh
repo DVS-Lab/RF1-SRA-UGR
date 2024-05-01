@@ -11,10 +11,10 @@ maindir="$(dirname "$scriptdir")"
 # base paths
 
 # Inputs
-L3_model_dir=L3_model-2_task-ugr_type-nppi-ecn-n70-cov-EIwINT1-flame1 #n70-cov-OAFEMwINT1-flame1 n79-cov-#_noINT-flame1
-TYPE=nppi-ecn #act #nppi-ecn ppi_seed-NAcc-bin
-N=70
-cov=EIwINT1 # #_noINT
+L3_model_dir=L3_model-2_task-ugr_type-ppi_seed-NAcc-bin-n110-cov-noCov-flame1 #n70-cov-OAFEMwINT1-flame1 n79-cov-#_noINT-flame1
+TYPE=ppi_seed-NAcc-bin #act #nppi-ecn ppi_seed-NAcc-bin
+N=110
+cov=noCov # EIwINT1 #_noINT
 # Outputs
 
 model=ugr
@@ -30,7 +30,7 @@ outputdir=${maindir}/derivatives/imaging_plots
 mkdir -p $outputdir
 
 # activation: ROI name and other path information % 'dACC-thr537' 'AI-thr10' 'seed-dlPFC-bin' 
-for ROI in 'COPE8_nppi_EI_age_pos' 'COPE13_act_EI_age_neg' 'COPE13_act_EI_ei_neg' 'cope13_neg' 'COPE13_nppi_EI_int_neg' 'COPE13_OAFEM_oafem_pos' 'cope13_pos' 'COPE13_ppi_OAFEM_neg' 'COPE14_EI_age_neg' 'cope14_neg' 'COPE14_nppi_EI_int_neg' 'COPE14_OAFEM_age_neg' 'COPE14_OAFEM_int_neg' 'COPE7_EI_int_neg' 'cope7_n79_neg' 'cope7_n79_pos' 'Cope7_OAFEM_age_pos' 'COPE7_OAFEM_int_neg' 'COPE8_act_EI_int_pos' 'cope8_all_neg' 'cope8_all_pos' 'COPE8_nppi_age_pos' 'COPE8_OAFEM_int_pos' 'COPE8_ppi_age_pos_OAFEM' 'COPE9_act_EI_age_pos' 'cope9_neg' 'COPE9_OAFEM_age_pos' 'cope9_pos'; do 
+for ROI in 'ppi_vlpfc'; do 
 #'seed-NAcc-thr' 'seed-vmPFC-5mm-thr' 'seed-ACC-50-thr' 'seed-SPL-thr'  'seed-mPFC-thr' 'seed-dlPFC-thr' 'seed-pTPJ-bin' 'seed-insula-thr'  'seed-insula-thr' 'seed-PCC_abb_extracted' 'seed-PCC_int_extracted' 'IFG_extracted' 'Insula_extracted' 'lputamen-bin' mask_act-no-int_cope-15_ugrpmod_zstat-14' 'mask_act-no-int_cope-9_ugppmod_zstat-4' 'mask_ppi-no-int_cope-14_ugpchoicepmod_zstat5' 'mask_act-no-int_cope-7_dgpcuepmod_zstat-10' 'mask_ppi-no-int_cope-11_dgppmod_zstat-10'  'mask_ppi-no-int_cope-7_dgpendowpmod_zstat-5'; do  #'seed-NAcc-thr' 'seed-vmPFC-5mm-thr' 'seed-ACC-50-thr' 'seed-SPL-thr' 'seed-insula-thr'  'seed-mPFC-thr' 'seed-dlPFC-thr' 'seed-pTPJ-thr' #'seed-dlPFC-UGR-bin'; do #
 	MASK=${maindir}/masks/${ROI}.nii.gz #masks_jbw3/
 	for COPENUM in 5 6 7 8 9 10 11 12 13 14; do # act use 7 8 9 10 11 12 for normal extractions

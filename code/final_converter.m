@@ -12,7 +12,7 @@ codedir= '/ZPOOL/data/projects/rf1-sra-ugr/code/';
 % NOTE: Parametric regressors for accept_high, low, reject_high, low are
 % not up to date.
 
-subjects_all_use = readtable([codedir 'newsubs.txt']);
+subjects_all_use = readtable([codedir 'newsubs.txt']); % newsubs.txt
 subjects = table2array(subjects_all_use);
 
 for ii = 1:length(subjects)
@@ -25,7 +25,7 @@ for ii = 1:length(subjects)
 
 
             % sub-101_task-ultimatum_run-0_raw.csv sub-102_task-ultimatum_run-1_raw.csv
-            fname = fullfile(maindir,'logs',num2str(subj),sprintf('sub-%04d_task-ultimatum_run-%d_raw.csv',subj,r)); % Psychopy taken out from Logs to make work for now.
+            fname = fullfile(maindir,'logs',num2str(subj),sprintf('sub-%04d_task-ultimatum_run-%01d_raw.csv',subj,r)); % Psychopy taken out from Logs to make work for now.
             if exist(fname,'file')
                 fid = fopen(fname,'r');
             else
@@ -55,7 +55,7 @@ for ii = 1:length(subjects)
             L_Option = round(L_Option);
             R_Option = round(R_Option);
 
-            fname = sprintf('sub-%03d_task-ugr_run-%02d_events.tsv',subj,r+1); % making compatible with bids output
+            fname = sprintf('sub-%03d_task-ugr_run-%01d_events.tsv',subj,r+1); % making compatible with bids output
             output = fullfile(usedir,'bids',['sub-' num2str(subj)],'func');
             if ~exist(output,'dir')
                 mkdir(output)

@@ -26,9 +26,9 @@ REPLACEME=$3 # this defines the parts of the path that differ across analyses
 type=${REPLACEME} # For output template
 
 # Variables that change per analysis. Check carefully! 
-covariate=EIwINT1
-N=70
-template=L3_task-ugr_group_EIwnoINT1_n70_flame1.fsf # L3_task-ugdg_COMPOSITE_noINT_n54_flame1.fsf
+covariate=noCov
+N=110
+template=L3_task-ugr_group_noCov_n110_flame1.fsf # L3_task-ugdg_COMPOSITE_noINT_n54_flame1.fsf
 
 # Set once and then forget.
 model=2

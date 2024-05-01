@@ -12,7 +12,7 @@ clc
 
 currentdir = pwd;
 
-subjects_all = readtable('L3_List_n80_ppi.txt');
+subjects_all = readtable('L3_subs_042924_subnums.txt');
 subjects = table2array(subjects_all);
 outputdir = [currentdir '/covariates/'];
 

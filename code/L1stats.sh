@@ -61,7 +61,7 @@ if [ ! -e $CONFOUNDEVS ]; then
 	exit # exiting to ensure nothing gets run without confounds
 fi
 
-EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/ugr/run-0${run} # zero padded
+EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/ugr/run-${run} # REMOVED zero padded
 
 # empty EVs (specific to this study)
 EV_MISSED_TRIAL=${EVDIR}_missed_trial.txt

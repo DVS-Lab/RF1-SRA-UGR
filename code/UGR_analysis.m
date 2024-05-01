@@ -10,78 +10,18 @@ clc
 % DVS Lab
 % Temple University
 currentdir = pwd;
-input_folder = [currentdir '\output\'];
+input_folder = [currentdir '/output/'];
 
-subjects_all = readtable('L3_List_n79.txt');
+subjects_all = readtable('L3_n99.txt');
 subjects = table2array(subjects_all);
 
-input_behavioral = 'covariates.csv'; % input file  
+input_behavioral = 'covariates042924.csv'; % input file  
 %motion_input = 'motion_data_input.xls';
 
 make_full = 1; % Reads in all subjects. Outputs subs, ones, strategic behavior, tsnr, fd means.
 
 
-%% Subs for full subject N, strat behavior, and motion.
 
-% This is the full pool of subjects. 
-% 
-% 
-% if make_full == 1
-%     values = [10317
-% 10369
-% 10402
-% 10418
-% 10429
-% 10462
-% 10478
-% 10486
-% 10529
-% 10541
-% 10555
-% 10572
-% 10581
-% 10584
-% 10585
-% 10589
-% 10590
-% 10596
-% 10603
-% 10606
-% 10608
-% 10617
-% 10636
-% 10638
-% 10641
-% 10642
-% 10644
-% 10647
-% 10649
-% 10652
-% 10656
-% 10657
-% 10659
-% 10663
-% 10673
-% 10674
-% 10677
-% 10685
-% 10690
-% 10691
-% 10700
-% 10701
-% 10716
-% 10720
-% 10723
-% 10741
-% 10774
-% 10777
-% 10781
-% 10783
-% 10800
-% 10804];
-% 
-% end
-% 
 values = subjects;
 %% UG_R earnings
 
@@ -175,7 +115,7 @@ end
 
 % Pull in same subjects to find raw age value
 
-input_behavioral = 'covariates.csv'; % input file  
+input_behavioral = 'covariates042924.csv'; % input file  
 data = readtable(input_behavioral);
 cov_data = [data.sub_id_rf1_data, data.sub_age, data.oafem_total, data.sub_age];
 

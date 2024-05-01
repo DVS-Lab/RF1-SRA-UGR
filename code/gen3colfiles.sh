@@ -25,7 +25,7 @@ sub=$1
 
 
 for run in 1 2; do
-  input=${datadir}/bids/sub-${sub}/func/sub-${sub}_task-ugr_run-0${run}_events.tsv
+  input=${datadir}/bids/sub-${sub}/func/sub-${sub}_task-ugr_run-${run}_events.tsv
 
 # for pmod tsvs # use ugr for decision, ugr_endowment for endowment
   output=${baseout}/sub-${sub}/ugr #ugr_endowment
@@ -38,7 +38,7 @@ for run in 1 2; do
   if [ -e $input ]; then # sub-3176/ugdg/run-01_event_computer_punish.txt
 
    # for pmod tsvs
-bash /ZPOOL/data/tools/BIDSto3col.sh -h "Offer_pmod"  $input ${output}/run-0${run} #Change "Endowment" to "Offer" if necessary
+bash /ZPOOL/data/tools/BIDSto3col.sh -h "Offer_pmod"  $input ${output}/run-${run} #Change "Endowment" to "Offer" if necessary
 
 # For normal tsvs
 
