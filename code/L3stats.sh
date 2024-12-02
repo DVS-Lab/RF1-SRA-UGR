@@ -20,14 +20,14 @@ maindir="$(dirname "$scriptdir")"
 # study-specific inputs and general output folder
 
 copenum=$1
-copenum_thresh_randomise=15 # actual contrasts start here. no need to do randomise main effects (e.g., reward > nothing/fixation/baseline)
+copenum_thresh_randomise=14 # actual contrasts start here. no need to do randomise main effects (e.g., reward > nothing/fixation/baseline)
 copename=$2
-REPLACEME=$3 # this defines the parts of the path that differ across analyses
+REPLACEME=$1 # 1 for act, 2 for ppi, 3 for nppi # this defines the parts of the path that differ across analyses
 type=${REPLACEME} # For output template
 
 # Variables that change per analysis. Check carefully! 
 covariate=noCov
-N=110
+N=160 # update with total n after exclusions
 template=L3_task-ugr_group_noCov_n110_flame1.fsf # L3_task-ugdg_COMPOSITE_noINT_n54_flame1.fsf
 
 # Set once and then forget.

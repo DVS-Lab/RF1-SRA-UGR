@@ -6,12 +6,12 @@ maindir="$(dirname "$scriptdir")"
 
 # setting inputs and common variables
 sub=$1
-type=$2
+type="act" # change to "act" "ppi_seed-NAcc-bin" "nppi-ecn"
 task=ugr # edit if necessary
 sm=5 # edit if necessary
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
 model=2
-NCOPES=14 #11 m1 # 14 m2 # add one for PHYS for PPIs
+NCOPES=14 #11 m1 # 14 m2 # add one for PHYS for PPI, so 15
 
 
 # --- start EDIT HERE start: exceptions and conditionals for the task

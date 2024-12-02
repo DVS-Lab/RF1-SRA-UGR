@@ -12,9 +12,9 @@ clc
 
 currentdir = pwd;
 
-subjects_all = readtable('L3_subs_042924_subnums.txt');
+subjects_all = readtable('sublist_all.txt'); % L3 list of subs...
 subjects = table2array(subjects_all);
-outputdir = [currentdir '/covariates/'];
+outputdir = [currentdir '/covariates/output'];
 
 
 if exist(outputdir) == 7
@@ -24,7 +24,7 @@ else
     mkdir(outputdir); % set name
 end
 
-input_behavioral = '/ZPOOL/data/projects/rf1-sra-data/code/covariates.csv'; % input file  
+input_behavioral = '/ZPOOL/data/projects/rf1-sra-data/code/covariates/covariates.csv'; % input file  
 %motion_input = 'motion_data_input.xls';
 
 %% Motion outliers

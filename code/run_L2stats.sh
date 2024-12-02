@@ -5,7 +5,7 @@ scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 maindir="$(dirname "$scriptdir")"
 
 # the "type" variable below is setting a path inside the main script
-for type in "nppi-ecn"; do # act ppi_seed-NAcc-bin nppi-ecn
+for type in "act"; do # act ppi_seed-NAcc-bin nppi-ecn
 	for sub in `cat ${scriptdir}/newsubs.txt`; do
 
 		# Manages the number of jobs and cores

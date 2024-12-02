@@ -7,13 +7,12 @@ nruns=2
 task=ugr # edit if necessary
 
 #for ppi in "ecn"; do # putting 0 first will indicate "activation" Put in "NAcc-bin" and "ecn" for PPI 
-for ppi in "eyeball_left" "eyeball_right"; do
+for ppi in "0"; do
 
-	#for sub in `cat ${scriptdir}/newsubs.txt`; do 
-	for sub in `cat ${scriptdir}/sublist_new-flip.txt`; do	
+	for sub in `cat ${scriptdir}/newsubs.txt`; do 	
 	  for run in `seq $nruns`; do
 
-			# some exceptionsc
+			# some exceptions
 			#if [ $sub -eq 1243 ] && [ $run -eq 1 ] && [ $ppi -eq "NAcc-bin" ]; # Different dimensions 
 			#        #mask='NAcc-bin-1243'
 			#	echo "separate mask ${mask} for sub-${sub} for task-${task}"

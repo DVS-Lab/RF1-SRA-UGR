@@ -19,9 +19,9 @@ TASK=ugr
 sm=5
 sub=$1
 run=$2
-ppi=$3 # 0 for activation, otherwise seed region or network
+ppi=0 # 0 for activation, otherwise seed region or network
 model=2
-maskname=$ppi
+maskname=$act
 
 # sub ____ has a slightly different mask due to different dimensions (SAR limit exceeded)
 
@@ -53,9 +53,10 @@ maskname=$ppi
 # set inputs and general outputs (should not need to chage across studies in Smith Lab)
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
 mkdir -p $MAINOUTPUT
-DATA=${rf1datadir}/derivatives/fmriprep/sub-${sub}/func/sub-${sub}_task-${TASK}_run-${run}_space-MNI152NLin6Asym_desc-preproc_bold.nii.gz
+DATA=${rf1datadir}/derivatives/fmriprep/sub-${sub}/func/sub-${sub}_task-${TASK}_run-${run}_part-mag_space-MNI152NLin6Asym_desc-preproc_bold.nii.gz
 NVOLUMES=`fslnvols $DATA`
-CONFOUNDEVS=${rf1datadir}/derivatives/fsl/confounds/sub-${sub}/sub-${sub}_task-${TASK}_run-${run}_desc-fslConfounds.tsv
+CONFOUNDEVS=${rf1datadir}/derivatives/fsl/confounds/sub-${sub}/sub-${sub}_task-${TASK}_run-${run}_part-mag_desc-fslConfounds.tsv
+echo "Starting analysis for sub-${sub}, run-${run}, analysis type: ${ppi}"
 if [ ! -e $CONFOUNDEVS ]; then
 	echo "missing confounds: $CONFOUNDEVS "  
 	exit # exiting to ensure nothing gets run without confounds

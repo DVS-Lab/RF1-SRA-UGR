@@ -17,7 +17,7 @@ maindir = '/ZPOOL/data/projects/rf1-sra/stimuli/Scan-Lets_Make_A_Deal'; % set on
 %maindir = 'A:/Data/rf1-sra/stimuli/Scan-Lets_Make_A_Deal'
 
 output_folder = [currentdir '/output/'];
-subjects_all = readtable('L3_subs_042924_subnums.txt');
+subjects_all = readtable('sublist_all.txt');
 subjects = table2array(subjects_all);
 
 % subjects = [10317
