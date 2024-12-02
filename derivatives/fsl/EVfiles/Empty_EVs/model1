@@ -1,0 +1,5 @@
+
+subj = [10317]
+accept = readtable('accept.csv')
+
+strcmp(accept.Var2,subj)
